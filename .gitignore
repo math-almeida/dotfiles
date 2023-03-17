@@ -1,1 +1,3 @@
-emacs.d/packages
+Emacs/packages
+Emacs/.local
+Emacs/init.el

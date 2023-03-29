@@ -439,6 +439,20 @@ Using [[https://github.com/joostkremers/visual-fill-column][visual-fill-column]]
 
 #+end_src
 
+** Stucture Templates
+
+This will configure some snippets for org-mode helping to build org files faster
+
+#+begin_src emacs-lisp
+
+  ;; This is needed as of Org 9.2
+  (require 'org-tempo)
+
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+  
+#+end_src
 ** Configure Babel Languages
 
 Used to execute or export code in =org-mode= code blocks.

@@ -1,8 +1,8 @@
-#+title: Owl Emacs configuration
+#+title: =Owl Emacs configuration=
 #+AUTHOR: Matheus Almeida
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
 
-* =Owl Emacs=
+* About this configuration
 
 This is the personal configuration of a lonely owl, seeking the truth following the path of The Great Debugger God.
 If you have any suggestion fell free to open a Issue or send me a message on [[https://twitter.com/Math_Almeid][Twitter]]

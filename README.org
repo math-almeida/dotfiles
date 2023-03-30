@@ -3,13 +3,17 @@
 
 * About this Dotfiles
 
+This is the personal configuration of a lonely owl, seeking the truth following the path of The Great Debugger God.
+If you have any suggestion fell free to open a Issue or send me a message on [[https://twitter.com/Math_Almeid][Twitter]]
+
 * Dependencies
 
 This configuration requires some dependencies that need to be satisfied before the symlink is made
 
 ** Path
 
-This configuration uses a specific path to work correctilly this path is
+This configuration uses a specific path to work correctilly, I will made this dynamic in a near future.
+The path is:
 
 =~/Workspaces/Personal/dotfiles= 
 

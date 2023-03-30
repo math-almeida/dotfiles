@@ -184,8 +184,8 @@ Create keybidings for find files and buffers
     "f" '(:ignore t :which-key "File")
     "b" '(:ignore t :which-key "Buffer")
     "ff" '(counsel-find-file :which-key "Find File")
-    "bb" '(ivy-switch-buffer t :which-key "Find Buffer")
-    "bd" '(kill-buffer t :which-key "Kill Buffer")
+    "bb" '(ivy-switch-buffer :which-key "Find Buffer")
+    "bd" '(kill-this-buffer :which-key "Kill Buffer")
     )
 
 #+end_src

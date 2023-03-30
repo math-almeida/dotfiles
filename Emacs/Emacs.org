@@ -2,7 +2,10 @@
 #+AUTHOR: Matheus Almeida
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
 
-* Welcome
+* =Owl Emacs=
+
+This is the personal configuration of a lonely owl, seeking the truth following the path of The Great Debugger God.
+If you have any suggestion fell free to open a Issue or send me a message on [[https://twitter.com/Math_Almeid][Twitter]]
 
 * General Configuration
 
@@ -120,7 +123,7 @@ Since I let =evil-mode= take over =C-u= for buffer scrolling, I need to re-bind 
       "m" '(:ignore t :which-key "Misc")
       "c" '(:ignore t :which-key "Config")
       "mt" '(counsel-load-theme :which-key "choose theme")
-      "cf" '(lambda () (interactive) (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Emacs/Emacs.org")) :which-key "Configuration File")))
+      "cf" '(lambda () (interactive) (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Emacs/Emacs.org")))))
 
 #+end_src
 

@@ -1,4 +1,4 @@
-#+title: =Owl Emacs configuration=
+#+title: =Owl Emacs=
 #+AUTHOR: Matheus Almeida
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
 
@@ -70,7 +70,10 @@ We use the [[https://github.com/emacscollective/no-littering/blob/master/no-litt
   ;; no-littering doesn't set this by default so we must place
   ;; auto save files in the same path as it uses for sessions
   (setq auto-save-file-name-transforms
-        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+  `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+
+  (setq auto-save-list-file-prefix
+  (no-littering-expand-var-file-name "auto-save/.saves-"))
 
 #+end_src
 

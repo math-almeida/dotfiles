@@ -51,21 +51,6 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
 
 #+end_src
 
-- Add it on =.zshrc=
-
-#+begin_src sh
-
-# Path to asdf
-. "$HOME/.asdf/asdf.sh"
-
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
-
-#+end_src
-
 - Install Ruby
 
 #+begin_src sh

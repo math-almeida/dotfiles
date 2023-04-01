@@ -17,6 +17,26 @@ The path is:
 
 =~/Workspaces/Personal/dotfiles= 
 
+** Zsh
+
+This configuration uses Zsh as default shell.
+
+*** Instalation
+
+#+begin_src sh
+
+sudo apt-get install zsh
+
+#+end_src
+
+*** Change default shell
+
+#+begin_src sh
+
+chsh -s $(which zsh)
+
+#+end_src
+
 ** Ruby
 
 Ruby needs to be installed and configured for running the symlinks script.

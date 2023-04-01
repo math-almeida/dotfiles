@@ -782,11 +782,7 @@ This package makes it much easier to edit Org documents when =org-hide-emphasis-
     :commands elfeed
     :config
     (setq elfeed-feeds
-          '("https://nullprogram.com/feed/"
-            "https://ambrevar.xyz/atom.xml"
-            "https://guix.gnu.org/feeds/blog.atom"
-            "https://valdyas.org/fading/feed/"
-            "https://www.reddit.com/r/emacs/.rss")))
+          '("https://feeds.feedburner.com/TheHackersNews?format=xml")))
 
   (owl/leader-keys
     "ae" '(:ignore t :which-key "elfeed")

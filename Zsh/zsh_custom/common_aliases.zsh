@@ -4,6 +4,7 @@ alias cp='rsync -a --stats --progress'
 alias ls="ls --color=auto" # color to ls
 alias l='ls -lah'
 alias isolation="sh ~/Workspaces/Personal/dotfiles/Emacs/run-emacs.sh"
+alias update="sudo apt full-upgrade -y"
 
 # Function to create multiple dirs
 function mkcd takedir() {

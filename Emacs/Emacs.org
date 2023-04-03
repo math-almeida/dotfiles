@@ -126,6 +126,7 @@ Since I let =evil-mode= take over =C-u= for buffer scrolling, I need to re-bind 
       "m" '(:ignore t :which-key "Misc")
       "c" '(:ignore t :which-key "Config")
       "mt" '(counsel-load-theme :which-key "choose theme")
+      "/" '(counsel-projectile-ag :which-key "find in project")
       "cf" '(lambda () (interactive) (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Emacs/Emacs.org")))))
 
 #+end_src
@@ -187,7 +188,8 @@ Create keybidings for find files and buffers
     "f" '(:ignore t :which-key "File")
     "b" '(:ignore t :which-key "Buffer")
     "ff" '(counsel-find-file :which-key "Find File")
-    "bb" '(ivy-switch-buffer :which-key "Find Buffer")
+    "bb" '(projectile-switch-to-buffer :which-key "Find Buffer")
+    "bB" '(ivy-switch-buffer :which-key "Find All Buffers")
     "bd" '(kill-this-buffer :which-key "Kill Buffer")
     )
 
@@ -761,6 +763,28 @@ This package makes it much easier to edit Org documents when =org-hide-emphasis-
 
 #+end_src
 
+** Workspace Management
+
+To simulate Doom Emacs Workspace management we use [[https://github.com/emacsmirror/eyebrowse][eyebrowse]].
+
+#+begin_src emacs-lisp
+
+  (use-package eyebrowse
+  :config
+    (eyebrowse-mode t)
+    (setq eyebrowse-wrap-around t)
+    (setq eyebrowse-new-workspace t)
+    (setq eyebrowse-keymap-prefix (kbd "C-c C-w"))
+    (global-set-key (kbd "C-c w") 'eyebrowse-switch-to-window-config))
+    
+  (owl/leader-keys
+    "TAB" '(:ignore t :which-key "Workspaces")
+    "TAB a" '(eyebrowse-switch-to-window-config :which-key "Select Workspace")
+    "TAB r" '(eyebrowse-rename-window-config :which-key "Rename Workspace")
+    "TAB d" '(eyebrowse-close-window-config :wich-key "Close Workspace"))
+
+#+end_src
+
 * Applications
 
 ** Binding Prefix
@@ -810,11 +834,15 @@ This package makes it much easier to edit Org documents when =org-hide-emphasis-
     ;; Set here the folder where we keep the Git Repos
     (when (file-directory-p "~/Workspaces")
       (setq projectile-project-search-path '("~/Workspaces")))
-    (setq projectile-switch-project-action #'projectile-dired))
+    (setq projectile-switch-project-action #'projectile-dired-other-window))
 
   (use-package counsel-projectile
     :after projectile
     :config (counsel-projectile-mode))
+    
+  (owl/leader-keys
+    "p" '(:ignore t :which-key "Projectile")
+    "pp" '(projectile-switch-project :which-key "Switch Project")) 
 
 #+end_src
 

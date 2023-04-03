@@ -232,7 +232,7 @@ Remove ugly stuff and make Emacs look more minimal and modern
   (setq visible-bell nil)
   
   ;; Disable beep song
-  (setq ring-bell-funcion 'ignore)
+  (setq ring-bell-function 'ignore)
 
   (column-number-mode)
   (global-display-line-numbers-mode t)

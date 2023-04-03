@@ -71,6 +71,18 @@ sudo apt install fonts-firacode fonts-cantarell
 
 #+end_src
 
+** Search engine
+
+We use [[https://github.com/ggreer/the_silver_searcher][The Silver Searcher]] as searching tool.
+
+*** Debian 
+
+#+begin_src sh
+
+sudo apt install silversearcher-ag
+
+#+end_src
+
 * Usage
 
 For use ou dotfiles you can run the symlink script or run just emacs in isolation mode for testing purposes.

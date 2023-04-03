@@ -682,12 +682,15 @@ We use [[https://github.com/joostkremers/visual-fill-column][visual-fill-column]
 #+begin_src emacs-lisp
 
   (defun owl/org-babel-tangle-config ()
-    (when (string-equal (buffer-file-name)
-                        (expand-file-name "~/Workspaces/Personal/dotfiles/Emacs/Emacs.org"))
+    (when (and buffer-file-name
+               (string-equal "Emacs.org" (file-name-nondirectory buffer-file-name))
+               (let ((dotfiles-dir (locate-dominating-file buffer-file-name "dotfiles")))
+                 (and dotfiles-dir
+                      (string-suffix-p "dotfiles/Emacs/Emacs.org" buffer-file-name))))
       ;; Dynamic scoping to the rescue
       (let ((org-confirm-babel-evaluate nil))
         (org-babel-tangle))))
-
+      
   (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'owl/org-babel-tangle-config)))
 #+end_src
 

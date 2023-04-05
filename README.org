@@ -17,6 +17,18 @@ The path is:
 
 =~/Workspaces/Personal/dotfiles= 
 
+** vterm
+
+For vterm dependencies we must install some things
+
+*** Debian
+
+#+begin_src sh
+
+sudo apt install cmake libvterm-dev
+
+#+end_src
+
 ** Zsh
 
 This configuration uses Zsh as default shell.

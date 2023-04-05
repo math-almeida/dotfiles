@@ -1,1 +1,0 @@
-alias compose="docker-compose"

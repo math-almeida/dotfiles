@@ -37,9 +37,9 @@ chsh -s $(which zsh)
 
 #+end_src
 
-** Ruby
+** asdf
 
-Ruby needs to be installed and configured for running the symlinks script.
+For runtime management we use [[https://github.com/asdf-vm/asdf][asdf]]
 
 *** Debian
 
@@ -51,7 +51,18 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
 
 #+end_src
 
-- Install Ruby
+- Install the dependencies
+
+#+begin_src sh
+
+sudo apt install build-essencial zlib1g-dev libyaml-dev libssl-dev
+
+#+end_src
+
+** Ruby
+
+Ruby needs to be installed and configured for running the symlinks script.
+
 
 #+begin_src sh
 

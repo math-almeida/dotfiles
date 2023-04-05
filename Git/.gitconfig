@@ -3,3 +3,5 @@
 	name = Matheus Almeida
 [init]
 	defaultBranch = master
+[pull]
+	rebase = false

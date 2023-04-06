@@ -1,5 +1,6 @@
 build: start-process emacs-dependencies symlink-dependencies construct-path zsh-change-default-shell
 	ruby symlinks.rb
+	sudo apt purge ruby # I told you
 	echo ""
 	echo "-----------INSTALATION FINISHED-----------"
 .PHONY:build
@@ -33,23 +34,21 @@ symlink-dependencies:
 	echo ""
 	sudo apt install build-essential zlib1g-dev libyaml-dev libssl-dev -y
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
-	echo "~/.asdf/completions/asdf.bash" >> ~/.bashrc
-	echo "~/.asdf/asdf.sh" >> ~/.bashrc
-	source ~/.bashrc
-	asdf plugin-add ruby && asdf install ruby latest && asdf global ruby latest
+	sudo apt install ruby -y # Calm, we will purge this later
 	echo "-----------SYMLINK DEPENDENCIES FINISHED-----------"
 .PHONY:symlink-dependencies
 
 emacs-dependencies:
 	echo "-----------INSTALING EMACS DEPENDENCIES-----------"
 	echo ""
-	sudo apt install fonts-firacode fonts-cantarell silversearcher-ag cmake libvterm-dev emacs=27.1 -y
+	sudo add-apt-repository ppa:kelleyk/emacs
+	sudo apt update
+	sudo apt install fonts-firacode fonts-cantarell silversearcher-ag cmake libvterm-dev emacs27 -y
 	echo "-----------EMACS DEPENDENCIES FINISHED-----------"
 .PHONY:emacs-dependencies
 
 start-process:
 	echo "-----------OWL DOTFILES-----------"
-	sudo apt update
 	echo ""
 .PHONY:start-process
 

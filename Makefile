@@ -5,6 +5,11 @@ build: start-process emacs-dependencies symlink-dependencies construct-path zsh-
 	echo "-----------INSTALATION FINISHED-----------"
 .PHONY:build
 
+isolation-setup: start-process emacs-dependencies construct-path
+	echo ""
+	echo "-----------ISOLATION SETUP FINISHED-----------"
+.PHONY:isolation-setup
+
 construct-path:
 	echo "-----------CREATING DOTFILES PATH-----------"
 	echo ""

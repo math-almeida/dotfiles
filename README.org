@@ -29,23 +29,10 @@ This script will:
 
 ** Isolation Mode
 
-I made a isolation mode if you want to test Olw Emacs before install it, for use in this mode just run the script in isolation folder.
+I made a isolation mode if you want to test Olw Emacs before install it. For use this mode just use the =isolation-setup= and the sh script.
 
 #+begin_src emacs-lisp
 
-sh Workspaces/Personal/dotfiles/Emacs/isolation/run-emacs.sh
+make isolation-setup && sh Workspaces/Personal/dotfiles/Emacs/isolation/run-emacs.sh
 
 #+end_src
-
-In this mode you need to install all the dependencies for your own.
-I create a Makefile to help with this with these actions:
-
-#+begin_src sh
-
-zsh-dependencies # Install all zsh dependencies
-symlink-dependencies # Install asdf and Ruby for symlinks
-emacs-dependencies # Install all emacs dependencies
-
-#+end_src
-
-To run Isolation Mode you just need the =emacs-dependecies= action

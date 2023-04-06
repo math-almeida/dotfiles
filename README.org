@@ -10,7 +10,6 @@ If you have any suggestion fell free to open a Issue or send me a message on [[h
 
 For use ou dotfiles you can run the symlink script or run just emacs in isolation mode for testing purposes.
 
-
 ** Owl Mode
 
 To install all dependencies and install the entire system just run:

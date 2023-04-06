@@ -6,119 +6,27 @@
 This is the personal configuration of a lonely owl, seeking the truth following the path of The Great Debugger God.
 If you have any suggestion fell free to open a Issue or send me a message on [[https://twitter.com/Math_Almeid][Twitter]]
 
-* Dependencies
-
-This configuration requires some dependencies that need to be satisfied before the symlink is made
-
-** Path
-
-This configuration uses a specific path to work correctilly, I will made this dynamic in a near future.
-The path is:
-
-=~/Workspaces/Personal/dotfiles= 
-
-** vterm
-
-For vterm dependencies we must install some things
-
-*** Debian
-
-#+begin_src sh
-
-sudo apt install cmake libvterm-dev
-
-#+end_src
-
-** Zsh
-
-This configuration uses Zsh as default shell.
-
-*** Instalation
-
-#+begin_src sh
-
-sudo apt-get install zsh
-
-#+end_src
-
-*** Change default shell
-
-#+begin_src sh
-
-chsh -s $(which zsh)
-
-#+end_src
-
-** asdf
-
-For runtime management we use [[https://github.com/asdf-vm/asdf][asdf]]
-
-*** Debian
-
-- Clone the  asdf Repo
-
-#+begin_src sh
-
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
-
-#+end_src
-
-- Install the dependencies
-
-#+begin_src sh
-
-sudo apt install build-essencial zlib1g-dev libyaml-dev libssl-dev
-
-#+end_src
-
-** Ruby
-
-Ruby needs to be installed and configured for running the symlinks script.
-
-
-#+begin_src sh
-
-asdf plugin-add ruby && asdf install ruby latest && asdf global ruby latest
-
-#+end_src
-
-** Fonts
-
-There's two fonts we need to install to be used in Emacs configuration
-
-*** Debian
-
-#+begin_src sh
-
-sudo apt install fonts-firacode fonts-cantarell
-
-#+end_src
-
-** Search engine
-
-We use [[https://github.com/ggreer/the_silver_searcher][The Silver Searcher]] as searching tool.
-
-*** Debian 
-
-#+begin_src sh
-
-sudo apt install silversearcher-ag
-
-#+end_src
-
 * Usage
 
 For use ou dotfiles you can run the symlink script or run just emacs in isolation mode for testing purposes.
 
+
 ** Owl Mode
 
-Just run and all will be configured :D
+To install all dependencies and install the entire system just run:
 
 #+begin_src sh
 
-ruby symlinks.rb
+make build
 
 #+end_src
+
+This script will: 
+ 
+- Configure dotfiles path moving the project and creating the required folders
+- Configure Emacs and his dependencies
+- Configure ZSH and his dependencies
+- Configure asdf and Ruby in the latest version
 
 ** Isolation Mode
 
@@ -129,3 +37,16 @@ I made a isolation mode if you want to test Olw Emacs before install it, for use
 sh Workspaces/Personal/dotfiles/Emacs/isolation/run-emacs.sh
 
 #+end_src
+
+In this mode you need to install all the dependencies for your own.
+I create a Makefile to help with this with these actions:
+
+#+begin_src sh
+
+zsh-dependencies # Install all zsh dependencies
+symlink-dependencies # Install asdf and Ruby for symlinks
+emacs-dependencies # Install all emacs dependencies
+
+#+end_src
+
+To run Isolation Mode you just need the =emacs-dependecies= action

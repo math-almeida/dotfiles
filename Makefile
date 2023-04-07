@@ -1,4 +1,4 @@
-build: start-process emacs-dependencies symlink-dependencies construct-path zsh-change-default-shell
+build: start-process emacs-dependencies symlink-dependencies docker-dependencies construct-path zsh-change-default-shell
 	ruby symlinks.rb
 	sudo apt purge ruby # I told you
 	echo ""
@@ -51,6 +51,20 @@ emacs-dependencies:
 	sudo apt install fonts-firacode fonts-cantarell silversearcher-ag cmake libvterm-dev emacs27 -y
 	echo "-----------EMACS DEPENDENCIES FINISHED-----------"
 .PHONY:emacs-dependencies
+
+docker-dependencies:
+	echo "-----------INSTALING DOCKER DEPENDENCIES-----------"
+	echo ""
+	sudo apt install apt-transport-https ca-certificates curl software-properties-common
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+	apt-cache policy docker-ce
+	sudo apt install docker-ce
+	sudo usermod -aG docker ${USER}
+	su - ${USER}
+	sudo apt install docker-compose
+	echo "-----------DOCKER DEPENDENCIES FINISHED-----------"
+.PHONY:docker-dependencies
 
 start-process:
 	echo "-----------OWL DOTFILES-----------"

@@ -3,6 +3,7 @@ export EDITOR="emacs" # set editor as emacs
 alias cp='rsync -a --stats --progress'
 alias ls="ls --color=auto" # color to ls
 alias l='ls -lah'
+alias ghistory="history | grep"
 alias isolation="sh ~/Workspaces/Personal/dotfiles/Emacs/run-emacs.sh"
 alias update="sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y"
 

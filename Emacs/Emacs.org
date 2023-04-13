@@ -124,10 +124,10 @@ Since I let =evil-mode= take over =C-u= for buffer scrolling, I need to re-bind 
 
     (owl/leader-keys
       "m" '(:ignore t :which-key "Misc")
-      "c" '(:ignore t :which-key "Config")
+      "d" '(:ignore t :which-key "Dotfiles")
       "mt" '(counsel-load-theme :which-key "choose theme")
       "/" '(counsel-projectile-ag :which-key "find in project")
-      "cf" '(lambda () (interactive) (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Emacs/Emacs.org")))))
+      "de" '(lambda () (interactive) (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Emacs/Emacs.org")))))
 
 #+end_src
 
@@ -871,7 +871,8 @@ To simulate Doom Emacs Workspace management we use [[https://github.com/emacsmir
   (owl/leader-keys
     "g"   '(:ignore t :which-key "magit")
 
-    "gg"  '(magit-status :which-key "magit-status"))
+    "gg"  '(magit-status :which-key "magit-status")
+    "gb"  '(magit-blame :which-key "magit-blame"))
 
 #+end_src
 
@@ -923,6 +924,19 @@ The =which-key= integration adds helpful descriptions of the various keys so you
 
   (use-package lsp-ivy
     :after lsp)
+
+#+end_src
+
+*** Keybidings
+
+Useful keybidings for interacting with LSP modes
+
+#+begin_src emacs-lisp
+
+  (owl/leader-keys
+    "c" '(:ignore t :which-key "Check")
+
+    "cd" '(flymake-show-diagnostics-buffer :which-key "Diagnostic"))
 
 #+end_src
 

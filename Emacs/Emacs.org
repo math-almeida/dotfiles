@@ -124,10 +124,39 @@ Since I let =evil-mode= take over =C-u= for buffer scrolling, I need to re-bind 
 
     (owl/leader-keys
       "m" '(:ignore t :which-key "Misc")
-      "d" '(:ignore t :which-key "Dotfiles")
       "mt" '(counsel-load-theme :which-key "choose theme")
-      "/" '(counsel-projectile-ag :which-key "find in project")
-      "de" '(lambda () (interactive) (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Emacs/Emacs.org")))))
+      "/" '(counsel-projectile-ag :which-key "find in project")))
+
+#+end_src
+
+*** Dotfiles Keybidings
+
+I create some useful keybidings for jumping into especific configuration files
+
+#+begin_src emacs-lisp
+
+  (defun owl/open-emacs-file()
+    (interactive)
+    (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Emacs/Emacs.org")))
+    
+  (defun owl/open-makefile()
+    (interactive)
+    (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Makefile")))
+
+  (defun owl/open-zsh-file()
+    (interactive)
+    (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Zsh/.zshrc")))
+
+  (defun owl/open-gitconfig-file()
+    (interactive)
+    (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Git/.gitconfig")))
+    
+  (owl/leader-keys
+      "d" '(:ignore t :which-key "Dotfiles")
+      "dg" '(owl/open-gitconfig-file :which-key "Git")
+      "dm" '(owl/open-makefile :which-key "Makefile")
+      "de" '(owl/open-emacs-file :which-key "Emacs")
+      "dz" '(owl/open-zsh-file :which-key "Zsh"))
 
 #+end_src
 

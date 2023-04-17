@@ -1012,6 +1012,21 @@ Basic configuration for Typescript language
 
 #+end_src
 
+** Rust
+
+Basic configuration for Rust language
+
+#+begin_src emacs-lisp
+
+  (use-package rust-mode
+    :mode "\\.rs\\'"
+    :init (setq rust-format-on-save t))
+
+  (use-package cargo
+    :defer t)
+  
+#+end_src
+
 * Terminal
 
 Configure terminal

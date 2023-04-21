@@ -317,6 +317,20 @@ To install in Debian based OS we can run the following piece of code in terminal
 
 #+end_src
 
+** Change Highlighting colours
+
+Better collours in changes highlighting
+
+#+begin_src emacs-lisp
+
+  (defun my-highlight-changes-config ()
+    (set-face-foreground 'highlight-changes nil)
+    (set-face-background 'highlight-changes "#3d5839")
+    (set-face-foreground 'highlight-changes-delete nil)
+    (set-face-background 'highlight-changes-delete "#f5b5b5"))
+
+#+end_src
+
 ** Better Modeline
 
 [[https://github.com/seagle0128/doom-modeline][doom-modeline]] is a attractive and rich mode line config for Emacs.
@@ -925,6 +939,19 @@ Emacs built in commenting functionality doesn't always works as expected, so we 
   (use-package evil-nerd-commenter
     :bind ("M-/" . evilnc-comment-or-uncomment-lines))
   
+#+end_src
+
+** Changes Highlighting
+
+For better code visibility whitout open Magit
+
+#+begin_src emacs-lisp
+
+  (add-hook 'global-highlight-changes-mode-hook #'my-highlight-changes-config)
+  (global-highlight-changes-mode t)
+  (setq highlight-changes-visibility-initial-state nil)
+  (global-set-key (kbd "<f6>") 'highlight-changes-visible-mode)
+
 #+end_src
 
 ** LSP

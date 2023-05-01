@@ -793,7 +793,7 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
 
     "on"  '(org-toggle-narrow-to-subtree :which-key "toggle narrow")
 
-    "os"  '(owl/counsel-rg-org-files :which-key "search notes")
+    "os"  '(owl/search-org-files :which-key "search notes")
 
     "oa"  '(org-agenda :which-key "status")
     "ot"  '(org-todo-list :which-key "todos")

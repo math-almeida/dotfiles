@@ -48,7 +48,7 @@ emacs-dependencies:
 	echo ""
 	sudo add-apt-repository ppa:kelleyk/emacs
 	sudo apt update
-	sudo apt install fonts-firacode fonts-cantarell silversearcher-ag cmake libvterm-dev emacs27 -y
+	sudo apt install fonts-firacode fonts-cantarell silversearcher-ag cmake libvterm-dev emacs27 ripgrep -y
 	echo "-----------EMACS DEPENDENCIES FINISHED-----------"
 .PHONY:emacs-dependencies
 

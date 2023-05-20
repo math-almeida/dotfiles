@@ -835,6 +835,19 @@ To simulate Doom Emacs Workspace management we use [[https://github.com/emacsmir
 
 #+end_src
 
+** Bookmarks
+
+For better code navigation I added keybidings for manage bookmarks
+
+#+begin_src emacs-lisp
+
+  (owl/leader-keys
+    "RET" '(:ignore t :which-key "Bookmarks")
+    "RET RET" '(counsel-bookmark :which-key "Create or jump to Bookmark")
+    "RET d" '(bookmark-delete :wich-key "Delete Bookmark"))
+
+#+end_src
+
 * Applications
 
 ** Binding Prefix
@@ -1080,6 +1093,19 @@ Basic configuration for Rust language
 
   (use-package cargo
     :defer t)
+  
+#+end_src
+
+** Terraform
+
+Basic configuration for Terraform
+
+#+begin_src emacs-lisp
+
+  (use-package terraform-mode
+    :ensure t
+    :mode "\\.tf\\'"
+    :init (setq terraform-format-on-save t))
   
 #+end_src
 

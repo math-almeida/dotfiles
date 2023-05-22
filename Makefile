@@ -1,4 +1,4 @@
-build: start-process emacs-dependencies symlink-dependencies docker-dependencies construct-path zsh-change-default-shell
+build: start-process emacs-dependencies symlink-dependencies docker-dependencies construct-path zsh-change-default-shell rust-dependencies
 	ruby symlinks.rb
 	sudo apt purge ruby # I told you
 	echo ""
@@ -66,9 +66,16 @@ docker-dependencies:
 	echo "-----------DOCKER DEPENDENCIES FINISHED-----------"
 .PHONY:docker-dependencies
 
+rust-dependencies:
+	echo "-----------INSTALING RUST DEPENDENCIES-----------"
+	echo ""
+	curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+	echo "-----------RUST DEPENDENCIES FINISHED-----------"
+.PHONY:start-process
+
 start-process:
 	echo "-----------OWL DOTFILES-----------"
 	echo ""
-.PHONY:start-process
+.PHONY:rust-dependencies
 
 .SILENT: # this has no purpose but to prevent echoing of commands for all targets

@@ -12,6 +12,7 @@ source ~/.zplug/init.zsh
 # Custom Plugins
 source "$ZSH_DOTFILES/zsh_custom/common_aliases.zsh"
 source "$ZSH_DOTFILES/zsh_custom/docker.plugin.zsh"
+source "$ZSH_DOTFILES/zsh_custom/common_paths.zsh"
 
 # Zplug plugins
 zplug "zsh-users/zsh-syntax-highlighting", defer:2 
@@ -40,9 +41,6 @@ libs=(
   theme-and-appearance.zsh
   vcs_info.zsh
 )
-for lib in "${libs[@]}"; do
-  zplug "ohmyzsh/ohmyzsh", use:"lib/$lib"
-done
 
 ## Plugins
 plugins=(
@@ -51,6 +49,11 @@ plugins=(
     git
     ruby
 )
+
+for lib in "${libs[@]}"; do
+  zplug "ohmyzsh/ohmyzsh", use:"lib/$lib"
+done
+
 for plugin in "${plugins[@]}"; do
   zplug "ohmyzsh/ohmyzsh", use:"plugins/$plugin"
 done

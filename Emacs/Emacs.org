@@ -552,29 +552,34 @@ This section contains the description and configuration of the productivity work
 #+begin_src emacs-lisp
 
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
-          (sequence "BACKLOG(b)" "PLAN(p)" "READY(r)" "ACTIVE(a)" "REVIEW(v)" "WAIT(w@/!)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(k@)")))
+    '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
+      (sequence "|" "WAIT(w)" "BACK(b)")))
 
+  ;; TODO: org-todo-keyword-faces
+  (setq org-todo-keyword-faces
+    '(("NEXT" . (:foreground "orange red" :weight bold))
+      ("WAIT" . (:foreground "HotPink2" :weight bold))
+      ("BACK" . (:foreground "MediumPurple3" :weight bold))))
+    
 #+end_src
 
 **** Tags
 
+Tags are used to filter all tasks to find anything actionable in a particular context. I use the =@home= and =@work= tags for explicit contexts and then the rest are used for filtering tasks for agenda views.
+- =followup= - Someone is waiting on me to follow up on this task, it should be prioritized above others
+- =batch= - The task can be batched with others (low effort)
+
 #+begin_src emacs-lisp
 
   (setq org-tag-alist
-        '((:startgroup)
-          ;; Put mutually exclusive tags here
-          (:endgroup)
-          ("@errand" . ?E)
-          ("@home" . ?H)
-          ("@work" . ?W)
-          ("agenda" . ?a)
-          ("planning" . ?p)
-          ("publish" . ?P)
-          ("batch" . ?b)
-          ("note" . ?n)
-          ("idea" . ?i)))
-  
+    '((:startgroup)
+      ; Put mutually exclusive tags here
+       (:endgroup)
+       ("@home" . ?H)
+       ("@work" . ?W)
+       ("batch" . ?b)
+       ("followup" . ?f)))  
+     
 #+end_src
 
 **** Refiling

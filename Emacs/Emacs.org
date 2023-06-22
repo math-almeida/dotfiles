@@ -870,7 +870,14 @@ For better code navigation I added keybidings for manage bookmarks
     :commands elfeed
     :config
     (setq elfeed-feeds
-          '("https://feeds.feedburner.com/TheHackersNews?format=xml")))
+          '(
+            ;; Security
+            ("https://feeds.feedburner.com/TheHackersNews?format=xml" security)
+            ;; Engineering 
+            ("https://martinfowler.com/feed.atom" engineering)
+            ("https://rubyonrails.org/feed.xml" engineering ruby)
+            ;; Podcasts
+            ("https://feeds.feedburner.com/AkitaOnRails?format=xml" podcast))))
 
   (owl/leader-keys
     "ae" '(:ignore t :which-key "elfeed")

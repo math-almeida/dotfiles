@@ -342,7 +342,6 @@ Better collours in changes highlighting
   (use-package all-the-icons)
 
   (use-package doom-modeline
-    :ensure t
     :init (doom-modeline-mode 1)
     :custom ((doom-modeline-heigth 15)))
 
@@ -876,6 +875,7 @@ For better code navigation I added keybidings for manage bookmarks
             ;; Engineering 
             ("https://martinfowler.com/feed.atom" engineering)
             ("https://rubyonrails.org/feed.xml" engineering ruby)
+            ("https://lore.kernel.org/lkml/new.atom" engineering kernel)
             ;; Podcasts
             ("https://feeds.feedburner.com/AkitaOnRails?format=xml" podcast))))
 
@@ -1105,11 +1105,24 @@ Basic configuration for Rust language
 
   (use-package rust-mode
     :mode "\\.rs\\'"
-    :init (setq rust-format-on-save t))
+    :hook (rust-mode . lsp-deferred)
+    :config
+    (setq lsp-rust-server 'rust-analyzer)
+    (setq lsp-rust-analyzer-proc-macro-enable t)
+    (setq lsp-rust-all-features t)
+    (setq rust-format-on-save t))
 
   (use-package cargo
     :defer t)
   
+#+end_src
+
+*** Server
+
+#+begin_src sh tangle: no
+
+  rustup component add rust-analyser
+
 #+end_src
 
 ** Terraform
@@ -1123,6 +1136,25 @@ Basic configuration for Terraform
     :mode "\\.tf\\'"
     :init (setq terraform-format-on-save t))
   
+#+end_src
+
+** Go
+
+Basic configuration for Go language
+
+#+begin_src emacs-lisp
+
+  (use-package go-mode
+    :hook (go-mode . lsp-deferred))
+  
+#+end_src
+
+*** Server
+
+#+begin_src sh
+
+go install golang.org/x/tools/gopls@latest
+
 #+end_src
 
 * Terminal

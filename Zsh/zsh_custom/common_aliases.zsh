@@ -7,10 +7,10 @@ alias ghistory="history | grep"
 alias isolation="sh ~/Workspaces/Personal/dotfiles/Emacs/run-emacs.sh"
 alias update="sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y"
 
-# Function to create multiple dirs
-function mkcd takedir() {
-mkdir -p $@ && cd ${@:$#}
-}
+# Vpn shortcuts
+alias tailstart="sudo tailscale up --accept-routes"
+alias tailstop="sudo tailscale down"
+alias tailstatus="tailscale status"
 
 # Function for zsh statistics about more used commands
 function zsh_stats() {
@@ -34,6 +34,11 @@ function takeurl() {
 function takegit() {
   git clone "$1"
   cd "$(basename ${1%%.git})"
+}
+
+# Function to create multiple dirs
+function mkcd takedir() {
+mkdir -p $@ && cd ${@:$#}
 }
 
 # Function wrapper to use the other functions based on regex

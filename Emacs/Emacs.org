@@ -848,6 +848,22 @@ For better code navigation I added keybidings for manage bookmarks
 
 #+end_src
 
+** Verb
+
+Mode for sending and editing http requests
+
+#+begin_src emacs-lisp
+
+  (defun org-prop (prop)
+    (org-entry-get (point) prop t))
+
+  (use-package verb
+  :defer t
+    :bind (:map verb-mode-map
+                ("C-c v" . verb-send-request-on-point)))
+                
+#+end_src
+
 * Applications
 
 ** Binding Prefix
@@ -992,13 +1008,35 @@ The =which-key= integration adds helpful descriptions of the various keys so you
 #+begin_src emacs-lisp
 
   (use-package lsp-mode
-    :commands (lsp lsp-deferred)
-    :hook (lsp-mode)
-    :init
-    (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+    :commands lsp 
+    :bind (:map lsp-mode-map
+                ("C-c r" . lsp-rename)
+                ("C-c h" . lsp-describe-thing-at-point)
+                ("C-c a" . lsp-execute-code-action)
+                ("C-M-." . lsp-goto-implementation))
     :config
-    (lsp-enable-which-key-integration t))
+    (setq-default lsp-prefer-flymake nil
+                  lsp-file-watch-threshold 10000
+                  lsp-headerline-breadcrumb-enable nil
+                  lsp-lens-enable nil
+                  lsp-enable-which-key-integration t))
   
+#+end_src
+
+*** LSP Ui
+
+#+begin_src emacs-lisp
+
+  (use-package lsp-ui
+    :defer t
+    :hook (lsp-mode . lsp-ui-mode)
+    :config
+    (setq lsp-ui-sideline-ignore-duplicate t
+          lsp-ui-sideline-show-code-actions t
+          lsp-ui-peek-always-show t
+          lsp-ui-doc-enable nil)
+    (lsp-ui-sideline-toggle-symbols-info))
+
 #+end_src
 
 *** LSP Ivy
@@ -1019,6 +1057,12 @@ Useful keybidings for interacting with LSP modes
 #+begin_src emacs-lisp
 
   (owl/leader-keys
+    "l" '(:ignore t :which-key "LSP")
+    "lr" '(lsp-rename :which-key "Rename")
+    "ld" '(lsp-describe-thing-at-point :which-key "Describe thing")
+    "le" '(lsp-execute-code-action :which-key "Execute code action")
+    "lg" '(lsp-goto-implementation :which-key "Goto impl")
+    
     "c" '(:ignore t :which-key "Check")
 
     "cd" '(flymake-show-diagnostics-buffer :which-key "Diagnostic"))
@@ -1105,7 +1149,7 @@ Basic configuration for Rust language
 
   (use-package rust-mode
     :mode "\\.rs\\'"
-    :hook (rust-mode . lsp-deferred)
+    :hook (rust-mode . lsp)
     :config
     (setq lsp-rust-server 'rust-analyzer)
     (setq lsp-rust-analyzer-proc-macro-enable t)
@@ -1132,7 +1176,6 @@ Basic configuration for Terraform
 #+begin_src emacs-lisp
 
   (use-package terraform-mode
-    :ensure t
     :mode "\\.tf\\'"
     :init (setq terraform-format-on-save t))
   

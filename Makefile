@@ -46,9 +46,8 @@ symlink-dependencies:
 emacs-dependencies:
 	echo "-----------INSTALING EMACS DEPENDENCIES-----------"
 	echo ""
-	sudo add-apt-repository ppa:kelleyk/emacs
 	sudo apt update
-	sudo apt install fonts-firacode fonts-cantarell silversearcher-ag cmake libvterm-dev emacs27 ripgrep -y
+	sudo apt install fonts-firacode fonts-cantarell silversearcher-ag cmake libvterm-dev emacs ripgrep -y
 	echo "-----------EMACS DEPENDENCIES FINISHED-----------"
 .PHONY:emacs-dependencies
 

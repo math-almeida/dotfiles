@@ -224,6 +224,19 @@ Create keybidings for find files and buffers
 
 #+end_src
 
+*** Jump commands
+
+Create jumping around things and simplify code navigation
+
+#+begin_src emacs-lisp
+
+  (owl/leader-keys 
+    "j" '(:ignore t :which-key "Jump")
+    "jj" '(pop-to-mark-command :which-key "To mark")
+    )
+
+#+end_src
+
 * UI Configuration
 
 This section configures UI settings and defines the apparence of the Editor.
@@ -952,10 +965,6 @@ Mode for sending and editing http requests
     :config
     (setq magit-bury-buffer-function #'owl/magit-bury-buffer))
   
-  ;; Package for extend magit, uses for PRs ans Issues
-  ;; Need configure GH Token first
-  (use-package forge)
-
   (owl/leader-keys
     "g"   '(:ignore t :which-key "magit")
 
@@ -1029,7 +1038,7 @@ The =which-key= integration adds helpful descriptions of the various keys so you
 
   (use-package lsp-ui
     :defer t
-    :hook (lsp-mode . lsp-ui-mode)
+    :commands lsp-ui-mode
     :config
     (setq lsp-ui-sideline-ignore-duplicate t
           lsp-ui-sideline-show-code-actions t
@@ -1062,6 +1071,10 @@ Useful keybidings for interacting with LSP modes
     "ld" '(lsp-describe-thing-at-point :which-key "Describe thing")
     "le" '(lsp-execute-code-action :which-key "Execute code action")
     "lg" '(lsp-goto-implementation :which-key "Goto impl")
+    
+    "lf" '(:ignore t :which-key "Find")
+    "lfd" '(lsp-ui-peek-find-definitions :which-key "Definitions")
+    "lfr" '(lsp-ui-peek-find-references :which-key "References")
     
     "c" '(:ignore t :which-key "Check")
 
@@ -1102,7 +1115,7 @@ Basic configuration for Ruby Language
 
   (use-package ruby-mode
     :mode "\\.rb\\'"
-    :hook (ruby-mode . lsp-deferred)
+    :hook (ruby-mode . lsp)
     :config
     (setq ruby-indent-level 2)
     (setq lsp-ruby-server-path "solargraph")

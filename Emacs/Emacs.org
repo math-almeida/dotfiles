@@ -877,6 +877,31 @@ Mode for sending and editing http requests
                 
 #+end_src
 
+** Google
+
+I love [[https://google.com][Google]] so using this package I can create queries and fast google searchs.
+
+#+begin_src emacs-lisp
+
+   (use-package google-this
+    :ensure t
+    :bind (("C-x C-k" . google-this-search))
+    :config
+      (setq google-this-keyword-prefix ""))    
+    
+#+end_src
+
+*** Keybidings
+
+#+begin_src emacs-lisp
+
+  (owl/leader-keys
+    "s" '(:ignore t :which-key "Search")
+    "ss" '(google-this-search :which-key "Search on Google")
+    "sw" '(google-this-forecast :wich-key "Weather"))
+
+#+end_src
+
 * Applications
 
 ** Binding Prefix

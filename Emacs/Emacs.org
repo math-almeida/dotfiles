@@ -1165,7 +1165,7 @@ Basic configuration for Typescript language
 
   (use-package typescript-mode
     :mode "\\.ts\\'"
-    :hook (typescript-mode . lsp-deferred)
+    :hook (typescript-mode . lsp)
     :config
     (setq typescript-indent-level 2))
   
@@ -1226,7 +1226,7 @@ Basic configuration for Go language
 #+begin_src emacs-lisp
 
   (use-package go-mode
-    :hook (go-mode . lsp-deferred))
+    :hook (go-mode . lsp))
   
 #+end_src
 

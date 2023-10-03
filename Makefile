@@ -1,10 +1,12 @@
-deb-build: start-process emacs-dependencies symlink-dependencies docker-dependencies construct-path zsh-change-default-shell
+# Debian based distros dependencies
+
+deb-build: deb-emacs-dependencies deb-symlink-dependencies deb-zsh-dependencies construct-path zsh-change-default-shell #deb-docker-dependencies
 	ruby symlinks.rb
 	sudo apt purge ruby # I told you
 	echo ""
 	echo "-----------INSTALATION FINISHED-----------"
 
-deb-isolation-setup: start-process emacs-dependencies construct-path
+deb-isolation-setup: deb-emacs-dependencies construct-path
 	echo ""
 	echo "-----------ISOLATION SETUP FINISHED-----------"
 
@@ -42,21 +44,35 @@ deb-docker-dependencies:
 	sudo apt install docker-compose
 	echo "-----------DOCKER DEPENDENCIES FINISHED-----------"
 
+# Arch based distros dependencies
 
-arch-zsh-dependencies:
-	echo "-----------INSTALING ZSH DEPENDENCIES-----------"
+arch-build: arch-emacs-dependencies arch-symlink-dependencies construct-path
+	rm ~/.zshrc
+	ruby symlinks.rb
+	yes | sudo pacman -Rs ruby # I told you
 	echo ""
-	sudo pamac -S zsh
-	echo "-----------ZSH DEPENDENCIES FINISHED-----------"
+	echo "-----------INSTALATION FINISHED-----------"
+
+arch-isolation-setup: arch-emacs-dependencies construct-path
+	echo ""
+	echo "-----------ISOLATION SETUP FINISHED-----------"
+
+arch-symlink-dependencies:
+	echo "-----------INSTALING SYMLINK DEPENDENCIES-----------"
+	echo ""
+	yes | sudo pacman -S base-devel 
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
+	yes | sudo pacman -S ruby # Calm, we will purge this later
+	echo "-----------SYMLINK DEPENDENCIES FINISHED-----------"
 
 arch-emacs-dependencies:
 	echo "-----------INSTALING EMACS DEPENDENCIES-----------"
 	echo ""
-	sudo pacman -Sy
-	sudo pacman -S emacs ttf-fira-code cantarell-fonts
+	yes | sudo pacman -Syu
+	yes | sudo pacman -S emacs ttf-fira-code cantarell-fonts libvterm cmake the_silver_searcher ripgrep 
 	echo "-----------EMACS DEPENDENCIES FINISHED-----------"
 
-
+# Operations
 
 construct-path:
 	echo "-----------CREATING DOTFILES PATH-----------"
@@ -67,18 +83,11 @@ construct-path:
 	echo ""
 	echo "-----------PATH CREATED-----------"
 
-zsh-change-default-shell: zsh-dependencies
+zsh-change-default-shell:
 	echo "-----------CHANGING DEFAULT SHELLL-----------"
 	echo ""
 	chsh -s /usr/bin/zsh
 	echo "-----------ZSH IS NOW THE DEFAULT SHELL-----------"
 
-
-
-
-
-start-process:
-	echo "-----------OWL DOTFILES-----------"
-	echo ""
 
 .SILENT: # this has no purpose but to prevent echoing of commands for all targets

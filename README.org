@@ -12,13 +12,7 @@ For use ou dotfiles you can run the symlink script or run just emacs in isolatio
 
 ** Owl Mode
 
-To install all dependencies and install the entire system just run:
-
-#+begin_src sh
-
-make build
-
-#+end_src
+To install all dependencies and install the entire system just run the build script for your distro.
 
 This script will: 
  
@@ -27,12 +21,38 @@ This script will:
 - Configure ZSH and his dependencies
 - Configure asdf
 
+*** Debian
+
+#+begin_src sh
+
+make deb-build
+
+#+end_src
+
+*** Arch
+
+#+begin_src sh
+
+make arch-build
+
+#+end_src
+
 ** Isolation Mode
 
 I made a isolation mode if you want to test Olw Emacs before install it. For use this mode just use the =isolation-setup= and the sh script.
 
+*** Debian
+
 #+begin_src emacs-lisp
 
-make isolation-setup && sh Workspaces/Personal/dotfiles/Emacs/isolation/run-emacs.sh
+make deb-isolation-setup && sh Workspaces/Personal/dotfiles/Emacs/isolation/run-emacs.sh
+
+#+end_src
+
+*** Arch
+
+#+begin_src emacs-lisp
+
+make arch-isolation-setup && sh Workspaces/Personal/dotfiles/Emacs/isolation/run-emacs.sh
 
 #+end_src

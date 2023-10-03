@@ -25,21 +25,22 @@ zplug "zsh-users/zsh-completions"
 
 ## Libs
 libs=(
-  clipboard.zsh
-  completion.zsh
-  correction.zsh
-  directories.zsh
-  git.zsh
-  grep.zsh
-  history.zsh
-  key-bindings.zsh
-  misc.zsh
-  nvm.zsh
-  prompt_info_functions.zsh
-  spectrum.zsh
-  termsupport.zsh
-  theme-and-appearance.zsh
-  vcs_info.zsh
+    functions.zsh
+    clipboard.zsh
+    completion.zsh
+    correction.zsh
+    directories.zsh
+    git.zsh
+    grep.zsh
+    history.zsh
+    key-bindings.zsh
+    misc.zsh
+    nvm.zsh
+    prompt_info_functions.zsh
+    spectrum.zsh
+    termsupport.zsh
+    theme-and-appearance.zsh
+    vcs_info.zsh
 )
 
 ## Plugins

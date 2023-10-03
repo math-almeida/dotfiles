@@ -66,6 +66,7 @@ We use the [[https://github.com/emacscollective/no-littering/blob/master/no-litt
 
   ;; Use no-littering to automatically set common paths to the new user-emacs-directory
   (use-package no-littering)
+  (no-littering-theme-backups)
 
   ;; no-littering doesn't set this by default so we must place
   ;; auto save files in the same path as it uses for sessions

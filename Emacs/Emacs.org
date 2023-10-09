@@ -608,6 +608,8 @@ Tags are used to filter all tasks to find anything actionable in a particular co
 
 #+begin_src emacs-lisp
 
+  (add-to-list 'org-export-backends 'md)
+  
   (setq org-agenda-window-setup 'current-window)
   (setq org-agenda-span 'day)
   (setq org-agenda-start-with-log-mode t)
@@ -642,7 +644,7 @@ Tags are used to filter all tasks to find anything actionable in a particular co
            ((org-agenda-overriding-header "Low Effort Tasks")
             (org-agenda-max-todos 20)
             (org-agenda-files org-agenda-files)))))
-            
+
 #+end_src
 
 **** Capture Templates

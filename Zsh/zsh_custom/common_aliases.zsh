@@ -11,6 +11,8 @@ alias update="sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -
 alias tailstart="sudo tailscale up --accept-routes"
 alias tailstop="sudo tailscale down"
 alias tailstatus="tailscale status"
+alias dupdate="sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y"
+alias pupdate="yes | sudo pacman -Syu"
 
 # Function for zsh statistics about more used commands
 function zsh_stats() {

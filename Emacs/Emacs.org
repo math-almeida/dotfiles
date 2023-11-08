@@ -814,6 +814,7 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
     "oa"  '(org-agenda :which-key "status")
     "ot"  '(org-todo-list :which-key "todos")
     "oc"  '(org-capture t :which-key "capture")
+    "or"  '(org-refile t :which-key "refile")
     "ox"  '(org-export-dispatch t :which-key "export"))
 
 #+end_src

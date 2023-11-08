@@ -560,14 +560,15 @@ This section contains the description and configuration of the productivity work
 #+begin_src emacs-lisp
 
   (setq org-todo-keywords
-    '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
-      (sequence "|" "WAIT(w)" "BACK(b)")))
+    '((sequence "TODO(t)" "NEXT(n)" "DOING(d)" "|" "DONE(d!)")
+      (sequence "|" "WAIT(w)" "CANCELED(c)")))
 
   ;; TODO: org-todo-keyword-faces
   (setq org-todo-keyword-faces
-    '(("NEXT" . (:foreground "orange red" :weight bold))
+    '(("NEXT" . (:foreground "MediumPurple3" :weight bold))
+      ("DOING" . (:foreground "White" :weight bold))
       ("WAIT" . (:foreground "HotPink2" :weight bold))
-      ("BACK" . (:foreground "MediumPurple3" :weight bold))))
+      ("CANCELED" . (:foreground "orange red" :weight bold))))
     
 #+end_src
 
@@ -575,7 +576,6 @@ This section contains the description and configuration of the productivity work
 
 Tags are used to filter all tasks to find anything actionable in a particular context. I use the =@home= and =@work= tags for explicit contexts and then the rest are used for filtering tasks for agenda views.
 - =followup= - Someone is waiting on me to follow up on this task, it should be prioritized above others
-- =batch= - The task can be batched with others (low effort)
 
 #+begin_src emacs-lisp
 
@@ -585,7 +585,6 @@ Tags are used to filter all tasks to find anything actionable in a particular co
        (:endgroup)
        ("@home" . ?H)
        ("@work" . ?W)
-       ("batch" . ?b)
        ("followup" . ?f)))  
      
 #+end_src
@@ -625,10 +624,13 @@ Tags are used to filter all tasks to find anything actionable in a particular co
            ((agenda "" ((org-deadline-warning-days 7)))
             (tags-todo "+PRIORITY=\"A\""
                        ((org-agenda-overriding-header "High Priority")))
-            (tags-todo "+followup" ((org-agenda-overriding-header "Needs Follow Up")))
+            (todo "DOING"
+                  ((org-agenda-overriding-header "Current Taks")
+                   (org-agenda-max-todos nil)))
             (todo "NEXT"
                   ((org-agenda-overriding-header "Next Actions")
                    (org-agenda-max-todos nil)))
+            (tags-todo "+followup" ((org-agenda-overriding-header "Needs Follow Up")))
             (todo "TODO"
                   ((org-agenda-overriding-header "Unprocessed Inbox Tasks")
                    (org-agenda-files '(,(owl/org-path "Inbox.org")))
@@ -637,13 +639,7 @@ Tags are used to filter all tasks to find anything actionable in a particular co
           ("n" "Next Tasks"
            ((agenda "" ((org-deadline-warning-days 7)))
             (todo "NEXT"
-                  ((org-agenda-overriding-header "Next Tasks")))))
-
-          ;; Low-effort next actions
-          ("e" tags-todo "+TODO=\"NEXT\"+Effort<15&+Effort>0"
-           ((org-agenda-overriding-header "Low Effort Tasks")
-            (org-agenda-max-todos 20)
-            (org-agenda-files org-agenda-files)))))
+                  ((org-agenda-overriding-header "Next Tasks")))))))
 
 #+end_src
 
@@ -666,17 +662,15 @@ Tags are used to filter all tasks to find anything actionable in a particular co
     `(("t" "Tasks")
       ("tt" "Task" entry (file ,(owl/org-path "Inbox.org"))
           "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
-      ("ts" "Clocked Entry Subtask" entry (clock)
-           "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
 
       ("j" "Journal Entries")
-      ("je" "General Entry" entry
+      ("jm" "Meetings" entry
            (file+olp+datetree ,(owl/org-path "Journal.org"))
            "\n* %<%I:%M %p> - %^{Title} \n\n%?\n\n"
            :tree-type week
            :clock-in :clock-resume
            :empty-lines 1)
-      ("jt" "Task Entry" entry
+      ("jt" "Task" entry
            (file+olp+datetree ,(owl/org-path "Journal.org"))
            "\n* %<%I:%M %p> - Task Notes: %a\n\n%?\n\n"
            :tree-type week
@@ -768,11 +762,8 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
 
   (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-  (add-to-list 'org-structure-template-alist '("li" . "src lisp"))
-  (add-to-list 'org-structure-template-alist '("sc" . "src scheme"))
-  (add-to-list 'org-structure-template-alist '("ts" . "src typescript"))
   (add-to-list 'org-structure-template-alist '("py" . "src python"))
-  (add-to-list 'org-structure-template-alist '("go" . "src go"))
+  (add-to-list 'org-structure-template-alist '("rust" . "src rust"))
   (add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
   (add-to-list 'org-structure-template-alist '("json" . "src json"))
 

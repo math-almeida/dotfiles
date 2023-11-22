@@ -919,14 +919,11 @@ I love [[https://google.com][Google]] so using this package I can create queries
     :config
     (setq elfeed-feeds
           '(
-            ;; Security
-            ("https://feeds.feedburner.com/TheHackersNews?format=xml" security)
             ;; Engineering 
-            ("https://martinfowler.com/feed.atom" engineering)
-            ("https://rubyonrails.org/feed.xml" engineering ruby)
-            ("https://lore.kernel.org/lkml/new.atom" engineering kernel)
-            ;; Podcasts
-            ("https://feeds.feedburner.com/AkitaOnRails?format=xml" podcast))))
+            ("https://systemcrafters.net/rss/news.xml" engineering emacs)
+            ("https://vitalik.ca/feed.xml" engineering blockchain crypto)
+            ("https://matklad.github.io/feed.xml" engineering rust)
+            ("https://os.phil-opp.com/rss.xml" engineering rust))))
 
   (owl/leader-keys
     "ae" '(:ignore t :which-key "elfeed")

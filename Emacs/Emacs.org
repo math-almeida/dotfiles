@@ -897,6 +897,39 @@ I love [[https://google.com][Google]] so using this package I can create queries
 
 #+end_src
 
+** Jwt decode
+
+Function to decode jwt tokens and parse to json
+ 
+#+begin_src emacs-lisp
+
+  (defun jwt-decode ()
+    "Jwt-decode region"
+    (interactive)
+    (let ((start (point)))
+      (search-forward ".")
+      (delete-char -1)
+      (base64-decode-region start (point) 't)
+      (json-pretty-print start (point)))
+    (newline)
+    (let ((start (point)))
+      (search-forward ".")
+      (delete-char -1)
+      (base64-decode-region start (point) 't)
+      (json-pretty-print start (point)))
+    (newline))
+    
+#+end_src
+
+*** Keybidings
+
+#+begin_src emacs-lisp
+
+  (owl/leader-keys
+    "mj" '(jwt-decode :wich-key "JWT decode"))
+
+#+end_src
+
 * Applications
 
 ** Binding Prefix
@@ -910,7 +943,7 @@ I love [[https://google.com][Google]] so using this package I can create queries
 
 ** RSS with Elfeed
 
-[[https://github.com/skeeto/elfeed][Elfeed]] is a great RSS feed reader. Uses for keeping track a few blogs and subreddits. 
+[[https://githubcom/skeeto/elfeed][Elfeed]] is a great RSS feed reader. Uses for keeping track a few blogs and subreddits. 
 
 #+begin_src emacs-lisp
 

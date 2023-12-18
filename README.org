@@ -45,7 +45,7 @@ I made a isolation mode if you want to test Olw Emacs before install it. For use
 
 #+begin_src emacs-lisp
 
-make deb-isolation-setup && sh Workspaces/Personal/dotfiles/Emacs/isolation/run-emacs.sh
+make deb-isolation-setup && sh ~/Workspaces/Personal/dotfiles/Emacs/isolation/run-emacs.sh
 
 #+end_src
 
@@ -53,6 +53,6 @@ make deb-isolation-setup && sh Workspaces/Personal/dotfiles/Emacs/isolation/run-
 
 #+begin_src emacs-lisp
 
-make arch-isolation-setup && sh Workspaces/Personal/dotfiles/Emacs/isolation/run-emacs.sh
+make arch-isolation-setup && sh ~/Workspaces/Personal/dotfiles/Emacs/isolation/run-emacs.sh
 
 #+end_src

@@ -1228,7 +1228,7 @@ Basic configuration for Rust language
 
 #+begin_src sh tangle: no
 
-  rustup component add rust-analyser
+  rustup component add rust-analyzer
 
 #+end_src
 

@@ -327,7 +327,7 @@ To install in Debian based OS we can run the following piece of code in terminal
 #+begin_src emacs-lisp
 
   (use-package doom-themes
-    :init (load-theme 'doom-palenight t))
+    :init (load-theme 'doom-city-lights  t))
 
 #+end_src
 
@@ -349,7 +349,7 @@ Better collours in changes highlighting
 
 [[https://github.com/seagle0128/doom-modeline][doom-modeline]] is a attractive and rich mode line config for Emacs.
 
-*NOTE:* The first time you load in new machine, you'll need to run =M-x all-the-icons-install-fonts= so that mode line icons display correctly
+*NOTE:* The first time you load in new machine, you'll need to run =M-x all-the-icons-install-fonts= and =M-x nerd-icons-install-fonts= so that mode line icons display correctly
 
 #+begin_src emacs-lisp
 

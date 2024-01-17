@@ -327,7 +327,7 @@ To install in Debian based OS we can run the following piece of code in terminal
 #+begin_src emacs-lisp
 
   (use-package doom-themes
-    :init (load-theme 'doom-city-lights  t))
+    :init (load-theme 'doom-dracula  t))
 
 #+end_src
 

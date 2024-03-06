@@ -806,6 +806,7 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
     "ot"  '(org-todo-list :which-key "todos")
     "oc"  '(org-capture t :which-key "capture")
     "or"  '(org-refile t :which-key "refile")
+    "od"  '(org-toggle-checkbox :which-key "Check")
     "ox"  '(org-export-dispatch t :which-key "export"))
 
 #+end_src
@@ -1164,13 +1165,10 @@ Basic configuration for Ruby Language
 #+begin_src emacs-lisp
 
   (use-package ruby-mode
-    :mode "\\.rb\\'"
+    :defer t
     :hook (ruby-mode . lsp)
     :config
-    (setq ruby-indent-level 2)
-    (setq lsp-ruby-server-path "solargraph")
-    (setq lsp-ruby-use-bundler t)
-    (setq lsp-ruby-gem-args '("--document" "Solargraph::Pin=0" "--require" "solargraph")))
+    (setq ruby-indent-level 2))
   
 #+end_src
 

@@ -763,9 +763,10 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
   (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
   (add-to-list 'org-structure-template-alist '("py" . "src python"))
-  (add-to-list 'org-structure-template-alist '("rust" . "src rust"))
+  (add-to-list 'org-structure-template-alist '("rs" . "src rust"))
   (add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
   (add-to-list 'org-structure-template-alist '("json" . "src json"))
+  (add-to-list 'org-structure-template-alist '("sql" . "src sql"))
 
 #+end_src
 
@@ -957,6 +958,7 @@ Function to decode jwt tokens and parse to json
             ("https://systemcrafters.net/rss/news.xml" engineering emacs)
             ("https://vitalik.ca/feed.xml" engineering blockchain crypto)
             ("https://matklad.github.io/feed.xml" engineering rust)
+            ("https://this-week-in-rust.org/rss.xml" engineering rust)
             ("https://os.phil-opp.com/rss.xml" engineering rust))))
 
   (owl/leader-keys

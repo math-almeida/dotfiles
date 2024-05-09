@@ -30,6 +30,15 @@ This section configures core things of this configuration.
 
 #+end_src
 
+** Warnings
+Details about warnings and options to dealing with then [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Warning-Basics.html][here]] and [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Warning-Options.html][here]]
+
+#+begin_src emacs-lisp
+
+  (setq warning-minimum-level :error)
+  
+#+end_src
+
 ** Package System Setup
 
 Use [[https://github.com/jwiegley/use-package][use-package]] to make easy to install and configure packages

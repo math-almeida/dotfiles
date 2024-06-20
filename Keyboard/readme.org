@@ -1,5 +1,10 @@
 #+title: =ZMK Config=
 #+AUTHOR: Matheus Almeida
 
-* About this config
-Personal keyboard configuration.
+* Usage
+This configuration has a =Action= named =build=.
+Running that action it will generate a firmware artifact wich can be downloaded to be used in the keyboard.
+
+* References
+This config is builded using ZMK firmware and configs.
+ZMK Docs can be found [[https://zmk.dev/docs][here]].

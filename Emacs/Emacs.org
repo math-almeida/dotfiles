@@ -141,14 +141,14 @@ Since I let =evil-mode= take over =C-u= for buffer scrolling, I need to re-bind 
 
 *** Dotfiles Keybidings
 
-I create some useful keybidings for jumping into especific configuration files
+I create some useful keybidings for jumping into especific configuration files.
 
 #+begin_src emacs-lisp
 
   (defun owl/open-emacs-file()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Emacs/Emacs.org")))
-    
+
   (defun owl/open-makefile()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Makefile")))
@@ -160,12 +160,18 @@ I create some useful keybidings for jumping into especific configuration files
   (defun owl/open-gitconfig-file()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Git/.gitconfig")))
-    
+
+  ;; Since I have only one keyboard I will open his config file
+  (defun owl/open-keyboard-file()
+    (interactive)
+    (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Keyboard/corne/corne.keymap")))
+
   (owl/leader-keys
       "d" '(:ignore t :which-key "Dotfiles")
       "dg" '(owl/open-gitconfig-file :which-key "Git")
       "dm" '(owl/open-makefile :which-key "Makefile")
       "de" '(owl/open-emacs-file :which-key "Emacs")
+      "dk" '(owl/open-keyboard-file :which-key "Keyboard")
       "dz" '(owl/open-zsh-file :which-key "Zsh"))
 
 #+end_src

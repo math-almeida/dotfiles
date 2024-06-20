@@ -6,14 +6,20 @@ directories = Dir
               .reject(&File.method(:file?))
 
 directories.each do |directory_in_dotfiles|
-  puts directory_in_dotfiles
   location_of_folder =
     if File.exist?("#{directory_in_dotfiles}/.location")
-      File.read("#{directory_in_dotfiles}/.location").gsub("\n", '')
+      path = File.read("#{directory_in_dotfiles}/.location").gsub("\n", '')
+      if path == 'exclude'
+        puts "#{directory_in_dotfiles} Ignored"
+        next
+      else
+        path
+      end
     else
       '~'
     end
 
+  puts directory_in_dotfiles
   symlinked_folder = File.expand_path(location_of_folder)
 
   unless File.exist?(symlinked_folder)

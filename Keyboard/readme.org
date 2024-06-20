@@ -1,0 +1,5 @@
+#+title: =ZMK Config=
+#+AUTHOR: Matheus Almeida
+
+* About this config
+Personal keyboard configuration.

@@ -261,7 +261,7 @@ Variables to adjust in each system
   (defvar owl/default-variable-font-size 100)
 
   ;; Make frame transparency overridable
-  (defvar owl/frame-transparency '(90 . 90))
+  (defvar owl/frame-transparency '(100 . 100))
   
 #+end_src
 
@@ -336,7 +336,7 @@ To install in Debian based OS we can run the following piece of code in terminal
 #+begin_src emacs-lisp
 
   (use-package doom-themes
-    :init (load-theme 'doom-dracula  t))
+    :init (load-theme 'doom-opera  t))
 
 #+end_src
 

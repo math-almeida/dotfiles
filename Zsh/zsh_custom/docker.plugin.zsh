@@ -7,3 +7,4 @@ alias dlogs="docker logs"
 
 # docker-compose alias
 alias compose="docker-compose"
+alias cexec="docker-compose exec"

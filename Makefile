@@ -28,7 +28,8 @@ deb-emacs-dependencies:
 	echo "-----------INSTALING EMACS DEPENDENCIES-----------"
 	echo ""
 	sudo apt update
-	sudo apt install fonts-firacode fonts-cantarell silversearcher-ag cmake libvterm-dev emacs ripgrep -y
+	sudo apt install fonts-firacode fonts-cantarell silversearcher-ag cmake libvterm-dev ripgrep -y
+	sudo snap install emacs --classic
 	echo "-----------EMACS DEPENDENCIES FINISHED-----------"
 
 deb-docker-dependencies:

@@ -18,7 +18,7 @@
 #define DE_DOWN &kp DOWN
 #define DE_RIGHT &kp RIGHT
 
-// SPACE CAPS TAB ENTER BACKSPACE ESCAPE DELETE
+// SPACE CAPS TAB ENTER BACKSPACE ESCAPE DELETE PRINT_SCREEN
 #define DE_SPACE &kp SPACE // Space
 #define DE_CAPS &kp CAPS   // Caps Lock
 #define DE_BSPC &kp BSPC   // Backspace
@@ -26,6 +26,7 @@
 #define DE_TAB &kp TAB     // Tab
 #define DE_DEL &kp DEL     // Delete
 #define DE_ESC &kp ESC     // ESC
+#define DE_PRIN &kp PSCRN  // PRINT_SCREEN
 
 // PAGE UP PAGE DOWN HOME END
 #define DE_PG_UP &kp PG_UP
@@ -133,7 +134,7 @@
 #define DE_TILDE &kp APOS     // ~
 #define DE_RBKT  &kp BSLH     // ]
 // Row 4
-#define DE_BSLH &kp LT         // (backslash)
+#define DE_NUBS &kp NUBS       // (backslash)
 #define DE_Z &kp Z             // Z
 #define DE_X &kp X             // X
 #define DE_C &kp C             // C

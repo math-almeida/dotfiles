@@ -1173,6 +1173,68 @@ We also use [[https://github.com/sebastiencs/company-box][company-box]] to furte
   
 #+end_src
 
+** Debugging
+
+Emacs integrates with gdb and lldb via the [[https://emacs-lsp.github.io/dap-mode/][dap-mode]]  package. Here we are configuring for Rust development since it's my main language, but in the future I will make this more generic.
+
+#+begin_src emacs-lisp
+
+  (defun get-rust-bin-name ()
+    "Get the name of the Rust binary from Cargo.toml."
+    (let ((cargo-toml (expand-file-name "Cargo.toml" (lsp-workspace-root))))
+      (if (file-exists-p cargo-toml)
+          (with-temp-buffer
+            (insert-file-contents cargo-toml)
+            (if (re-search-forward "^name = \"\\([^\"]+\\)\"" nil t)
+                (match-string 1)
+              (error "Couldn't find package name in Cargo.toml")))
+        (error "Cargo.toml not found"))))
+
+  (use-package exec-path-from-shell
+    :ensure t
+    :config
+    (exec-path-from-shell-initialize))
+
+  (use-package dap-mode
+    :hook
+    (rust-mode . (lambda ()
+                   (dap-ui-mode)
+                   (dap-ui-controls-mode 1)
+                   (require 'dap-lldb)
+                   (require 'dap-gdb-lldb)
+                   (require 'dap-codelldb)
+                   ;; installs .extension/vscode
+                   (dap-gdb-lldb-setup)
+                   (dap-register-debug-template
+                    "LLDB::Run Rust"
+                    (list :type "lldb"
+                          :request "launch"
+                          :name "LLDB::Run"
+                          :miDebuggerPath "~/.asdf/shims/rust-lldb"
+                          :target nil
+                          :cwd nil
+                          :program (concat "${workspaceFolder}/target/debug/"(get-rust-bin-name)) 
+                          ))
+                   )))
+
+#+end_src
+
+*** Aditional installation
+
+Install lldb:
+#+begin_src sh
+
+  sudo apt install lldb
+  
+#+end_src
+
+Run install commands on Emacs:
+- =dap-gdb-lldb-setup=
+- =dap-codelldb-setup=
+
+*** Errors
+The  =(dap-gdb-lldb-setup)= will install a VS Code extension to =user-emacs-dir/.extension/vscode/webfreak.debug= . If the installation was not successful we need to delete =vscode/= folder and run =(dap-gdb-lldb-setup)= again.
+
 * Languages
 
 ** Ruby

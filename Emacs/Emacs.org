@@ -236,7 +236,7 @@ Create keybidings for find files and buffers
     "bb" '(projectile-switch-to-buffer :which-key "Find Buffer")
     "bB" '(ivy-switch-buffer :which-key "Find All Buffers")
     "bd" '(kill-this-buffer :which-key "Kill Buffer")
-    "bd" '(flymake-show-diagnostics-buffer :which-key "Diagnostic Buffer")
+    "bc" '(flymake-show-diagnostics-buffer :which-key "Diagnostic Buffer")
     )
 
 #+end_src
@@ -1189,15 +1189,16 @@ Emacs integrates with gdb and lldb via the [[https://emacs-lsp.github.io/dap-mod
                 (match-string 1)
               (error "Couldn't find package name in Cargo.toml")))
         (error "Cargo.toml not found"))))
-  
+
 #+end_src
 
 *** Package
 
 #+begin_src emacs-lisp
-  
+
   (use-package dap-mode
-    :config
+    :hook
+    (rust-mode . (lambda ()
     (require 'dap-lldb)
     (require 'dap-gdb-lldb)
     (require 'dap-codelldb)
@@ -1226,7 +1227,7 @@ Emacs integrates with gdb and lldb via the [[https://emacs-lsp.github.io/dap-mod
 *** End of =use-package dap-mode=
 
 #+begin_src emacs-lisp
-  )
+  )))
 #+end_src
 
 *** Keybidings
@@ -1236,9 +1237,13 @@ Emacs integrates with gdb and lldb via the [[https://emacs-lsp.github.io/dap-mod
   (owl/leader-keys
     "d"   '(:ignore t :which-key "Debugg")
 
-    "dh"  '(dap-hydra :which-key "Debugger")
+    "ds"  '(dap-debug :which-key "Debugger")
+    "dh"  '(dap-hydra :which-key "Helper")
+    "da"  '(dap-breakpoint-add :which-key "Add breakpoint")
+    "dr"  '(dap-breakpoint-delete :which-key "Remove breakpoint")
+    "de"  '(dap-debug-edit-template :which-key "Edit template")
     "dd"  '(dap-disconnect :which-key "Disconect"))
-  
+
 #+end_src
 
 *** Errors

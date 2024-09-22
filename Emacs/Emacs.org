@@ -985,6 +985,29 @@ Function to decode jwt tokens and parse to json
 
 #+end_src
 
+** IA with Claude
+
+For IA integration we are using [[https://github.com/karthink/gptel][gptel]], a awesome LLM client to Emacs, since my current company provides me Antrophic api-key, I will use Claude as AI assistant.
+
+#+begin_src emacs-lisp
+
+  (use-package gptel
+    :config
+    (setq
+     gptel-model "claude-3-sonnet-20240229"
+     gptel-backend (gptel-make-anthropic "Claude"
+                                         :stream t
+                                         :key "your-api-key")))
+  
+  (owl/leader-keys
+    "aa" '(:ignore t :which-key "IA assistant")
+    "aac" '(gptel :which-key "Chat")
+    "aaf" '(gptel-add-file :which-key "Add file")
+    "aam" '(gptel-menu :which-key "Menu")
+    )
+
+#+end_src
+
 * Development
 
 ** Projectile

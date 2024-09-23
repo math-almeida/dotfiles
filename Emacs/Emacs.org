@@ -995,10 +995,11 @@ For IA integration we are using [[https://github.com/karthink/gptel][gptel]], a 
     :config
     (setq
      gptel-model "claude-3-sonnet-20240229"
+     gptel-default-mode 'org-mode
      gptel-backend (gptel-make-anthropic "Claude"
                                          :stream t
-                                         :key "your-api-key")))
-  
+                                         :key (lambda () (auth-source-pick-first-password :host "api.anthropic.com")))))
+
   (owl/leader-keys
     "aa" '(:ignore t :which-key "IA assistant")
     "aac" '(gptel :which-key "Chat")

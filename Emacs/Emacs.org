@@ -998,9 +998,7 @@ For IA integration we are using [[https://github.com/karthink/gptel][gptel]], a 
      gptel-default-mode 'org-mode
      gptel-backend (gptel-make-anthropic "Claude"
                                          :stream t
-                                         :key (lambda () (auth-source-pick-first-password :host "api.anthropic.com"))))
-    (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
-    (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
+                                         :key (lambda () (auth-source-pick-first-password :host "api.anthropic.com")))))
 
   (owl/leader-keys
     "aa" '(:ignore t :which-key "IA assistant")

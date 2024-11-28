@@ -9,14 +9,21 @@ alias ghistory="history | grep"
 # Isolate emacs shortcut
 alias isolation="sh ~/Workspaces/Personal/dotfiles/Emacs/run-emacs.sh"
 
-# Vpn shortcuts
-alias tailstart="sudo tailscale up --accept-routes"
-alias tailstop="sudo tailscale down"
-alias tailstatus="tailscale status"
-
 # Update shortcuts
 alias dupdate="sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y"
 alias pupdate="yes | sudo pacman -Syu"
+
+# Vpn shortcuts
+alias tailstatus="tailscale status"
+function tailstart() {
+    sudo tailscale up --accept-routes
+    echo "Tailscale started successfully"
+}
+
+function tailstop() {
+    sudo tailscale down
+    echo "Tailscale stoped"
+}
 
 # Function for zsh statistics about more used commands
 function zsh_stats() {

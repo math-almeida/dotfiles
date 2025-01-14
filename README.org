@@ -1,16 +1,16 @@
-#+title: =The Owl Dotfiles=
+#+title: =The Torresmo Dotfiles=
 #+AUTHOR: Matheus Almeida
 
 * About this Dotfiles
 
-This is the personal configuration of a lonely owl, seeking the truth following the path of The Great Debugger God.
+This is the personal configuration of Torresmol, seeking the truth following the path of The Great Debugger God.
 If you have any suggestion fell free to open a Issue or send me a message on [[https://twitter.com/Math_Almeid][Twitter]]
 
 * Usage
 
 For use ou dotfiles you can run the symlink script or run just emacs in isolation mode for testing purposes.
 
-** Owl Mode
+** Torresmo Mode
 
 To install all dependencies and install the entire system just run the build script for your distro.
 
@@ -39,7 +39,7 @@ make arch-build
 
 ** Isolation Mode
 
-I made a isolation mode if you want to test Olw Emacs before install it. For use this mode just use the =isolation-setup= and the sh script.
+I made a isolation mode if you want to test Torresmo Emacs before install it. For use this mode just use the =isolation-setup= and the sh script.
 
 *** Debian
 

@@ -1,10 +1,10 @@
-#+title: =Owl Emacs=
+#+title: =Torresmo Emacs=
 #+AUTHOR: Matheus Almeida
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
 
 * About this configuration
 
-This is the personal configuration of a lonely owl, seeking the truth following the path of The Great Debugger God.
+This is the personal configuration of Torresmo, seeking the truth following the path of The Great Debugger God.
 If you have any suggestion fell free to open a Issue or send me a message on [[https://twitter.com/Math_Almeid][Twitter]]
 
 * General Configuration
@@ -19,14 +19,14 @@ This section configures core things of this configuration.
   ;; The default is 800 kilobytes.  Measured in bytes.
   (setq gc-cons-threshold (* 20 1000 1000))
 
-  (defun owl/display-startup-time ()
+  (defun torresmo/display-startup-time ()
     (message "Emacs loaded in %s with %d garbage collections."
              (format "%.2f seconds"
                      (float-time
                        (time-subtract after-init-time before-init-time)))
              gcs-done))
 
-  (add-hook 'emacs-startup-hook #'owl/display-startup-time)
+  (add-hook 'emacs-startup-hook #'torresmo/display-startup-time)
 
 #+end_src
 
@@ -127,12 +127,12 @@ Since I let =evil-mode= take over =C-u= for buffer scrolling, I need to re-bind 
     :config
     (general-evil-setup t)
 
-    (general-create-definer owl/leader-keys
+    (general-create-definer torresmo/leader-keys
       :keymaps '(normal insert visual emacs)
       :prefix "SPC" ;; Works on normal mode
       :global-prefix "C-SPC") ;; Works in all modes
 
-    (owl/leader-keys
+    (torresmo/leader-keys
       "m" '(:ignore t :which-key "Misc")
       "mt" '(counsel-load-theme :which-key "choose theme")
       "/" '(counsel-projectile-ag :which-key "find in project")))
@@ -145,34 +145,34 @@ I create some useful keybidings for jumping into especific configuration files.
 
 #+begin_src emacs-lisp
 
-  (defun owl/open-emacs-file()
+  (defun torresmo/open-emacs-file()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Emacs/Emacs.org")))
 
-  (defun owl/open-makefile()
+  (defun torresmo/open-makefile()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Makefile")))
 
-  (defun owl/open-zsh-file()
+  (defun torresmo/open-zsh-file()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Zsh/.zshrc")))
 
-  (defun owl/open-gitconfig-file()
+  (defun torresmo/open-gitconfig-file()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Git/.gitconfig")))
 
   ;; Since I have only one keyboard I will open his config file
-  (defun owl/open-keyboard-file()
+  (defun torresmo/open-keyboard-file()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Keyboard/corne/corne.keymap")))
 
-  (owl/leader-keys
+  (torresmo/leader-keys
       "c" '(:ignore t :which-key "Configuration")
-      "cg" '(owl/open-gitconfig-file :which-key "Git")
-      "cm" '(owl/open-makefile :which-key "Makefile")
-      "ce" '(owl/open-emacs-file :which-key "Emacs")
-      "ck" '(owl/open-keyboard-file :which-key "Keyboard")
-      "cz" '(owl/open-zsh-file :which-key "Zsh"))
+      "cg" '(torresmo/open-gitconfig-file :which-key "Git")
+      "cm" '(torresmo/open-makefile :which-key "Makefile")
+      "ce" '(torresmo/open-emacs-file :which-key "Emacs")
+      "ck" '(torresmo/open-keyboard-file :which-key "Keyboard")
+      "cz" '(torresmo/open-zsh-file :which-key "Zsh"))
 
 #+end_src
 
@@ -229,7 +229,7 @@ Create keybidings for find files and buffers
 
 #+begin_src emacs-lisp
 
-  (owl/leader-keys 
+  (torresmo/leader-keys 
     "f" '(:ignore t :which-key "File")
     "b" '(:ignore t :which-key "Buffer")
     "ff" '(counsel-find-file :which-key "Find File")
@@ -247,7 +247,7 @@ Create jumping around things and simplify code navigation
 
 #+begin_src emacs-lisp
 
-  (owl/leader-keys 
+  (torresmo/leader-keys 
     "j" '(:ignore t :which-key "Jump")
     "jj" '(pop-to-mark-command :which-key "To mark")
     )
@@ -264,11 +264,11 @@ Variables to adjust in each system
 
 #+begin_src emacs-lisp
 
-  (defvar owl/default-font-size 100)
-  (defvar owl/default-variable-font-size 100)
+  (defvar torresmo/default-font-size 100)
+  (defvar torresmo/default-variable-font-size 100)
 
   ;; Make frame transparency overridable
-  (defvar owl/frame-transparency '(100 . 100))
+  (defvar torresmo/frame-transparency '(100 . 100))
   
 #+end_src
 
@@ -297,8 +297,8 @@ Remove ugly stuff and make Emacs look more minimal and modern
   (global-display-line-numbers-mode t)
 
   ;; Set frame transparency
-  (set-frame-parameter (selected-frame) 'alpha owl/frame-transparency)
-  (add-to-list 'default-frame-alist `(alpha . ,owl/frame-transparency))
+  (set-frame-parameter (selected-frame) 'alpha torresmo/frame-transparency)
+  (add-to-list 'default-frame-alist `(alpha . ,torresmo/frame-transparency))
   (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -318,11 +318,11 @@ I like to use [[https://github.com/tonsky/FiraCode ][Fira Code]] and [[https://f
 
 #+begin_src emacs-lisp
 
-  (set-face-attribute 'default nil :font "Fira Code Retina" :height owl/default-font-size)
+  (set-face-attribute 'default nil :font "Fira Code Retina" :height torresmo/default-font-size)
 
-  (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height owl/default-font-size)
+  (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height torresmo/default-font-size)
 
-  (set-face-attribute 'variable-pitch nil :font "Cantarell" :height owl/default-variable-font-size :weight 'regular)
+  (set-face-attribute 'variable-pitch nil :font "Cantarell" :height torresmo/default-variable-font-size :weight 'regular)
 
 #+end_src
 
@@ -336,7 +336,7 @@ To install in Debian based OS we can run the following piece of code in terminal
 
 #+end_src
 
-** Color Theme
+** Color Themes
 
 [[https://github.com/doomemacs/themes][doom-themes]] is a set of themes used by [[https://github.com/doomemacs/doomemacs][Doom Emacs]]. We can run =M-x counsel-load-theme= to choose between them.
 
@@ -353,7 +353,7 @@ Better collours in changes highlighting
 
 #+begin_src emacs-lisp
 
-  (defun my-highlight-changes-config ()
+  (defun torresmo-highlight-changes-config ()
     (set-face-foreground 'highlight-changes nil)
     (set-face-background 'highlight-changes "#3d5839")
     (set-face-foreground 'highlight-changes-delete nil)
@@ -483,7 +483,7 @@ Use of [[https://github.com/abo-abo/hydra][Hydra]] to quickly adjust scale of te
       ("k" text-scale-decrease "out")
       ("f" nil "finished" :exit t))
 
-    (owl/leader-keys
+    (torresmo/leader-keys
       "ms" '(hydra-text-scale/body :which-key "scale text"))
 
 #+end_src
@@ -502,7 +502,7 @@ Use bullets characters instead of asterisks.
 
 #+begin_src emacs-lisp
 
-  (defun owl/org-font-setup ()
+  (defun torresmo/org-font-setup ()
     ;; Replace list hyphen with dot
     (font-lock-add-keywords 'org-mode
                             '(("^ *\\([-]\\) "
@@ -538,7 +538,7 @@ Set up Org Mode with a baseline configuration. The following sections will ad mo
 
 #+begin_src emacs-lisp
 
-  (defun owl/org-mode-setup ()
+  (defun torresmo/org-mode-setup ()
     (org-indent-mode)
     (variable-pitch-mode 1)
     (visual-line-mode 1))
@@ -546,7 +546,7 @@ Set up Org Mode with a baseline configuration. The following sections will ad mo
   (use-package org
     :pin org
     :commands (org-capture org-agenda)
-    :hook (org-mode . owl/org-mode-setup)
+    :hook (org-mode . torresmo/org-mode-setup)
     :config
     (setq org-ellipsis " ▾")
 
@@ -564,10 +564,10 @@ This section contains the description and configuration of the productivity work
 
   (setq org-agenda-files `(,org-directory))
   
-  (defun owl/org-path (path)
+  (defun torresmo/org-path (path)
     (expand-file-name path org-directory))
 
-  (setq org-default-notes-file (owl/org-path "Inbox.org"))
+  (setq org-default-notes-file (torresmo/org-path "Inbox.org"))
 
 #+end_src
 
@@ -649,7 +649,7 @@ Tags are used to filter all tasks to find anything actionable in a particular co
             (tags-todo "+followup" ((org-agenda-overriding-header "Needs Follow Up")))
             (todo "TODO"
                   ((org-agenda-overriding-header "Unprocessed Inbox Tasks")
-                   (org-agenda-files '(,(owl/org-path "Inbox.org")))
+                   (org-agenda-files '(,(torresmo/org-path "Inbox.org")))
                    (org-agenda-text-search-extra-files nil)))))
 
           ("n" "Next Tasks"
@@ -663,7 +663,7 @@ Tags are used to filter all tasks to find anything actionable in a particular co
 
 #+begin_src emacs-lisp
 
-  (defun owl/on-org-capture ()
+  (defun torresmo/on-org-capture ()
     ;; Don't show the confirmation header text
     (setq header-line-format nil)
 
@@ -672,28 +672,28 @@ Tags are used to filter all tasks to find anything actionable in a particular co
       (pcase template
         ("jj" (delete-other-windows)))))
         
-  (add-hook 'org-capture-mode-hook 'owl/on-org-capture)
+  (add-hook 'org-capture-mode-hook 'torresmo/on-org-capture)
 
   (setq org-capture-templates
     `(("t" "Tasks")
-      ("tt" "Task" entry (file ,(owl/org-path "Inbox.org"))
+      ("tt" "Task" entry (file ,(torresmo/org-path "Inbox.org"))
           "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
 
       ("j" "Journal Entries")
       ("jm" "Meetings" entry
-           (file+olp+datetree ,(owl/org-path "Journal.org"))
+           (file+olp+datetree ,(torresmo/org-path "Journal.org"))
            "\n* %<%I:%M %p> - %^{Title} \n\n%?\n\n"
            :tree-type week
            :clock-in :clock-resume
            :empty-lines 1)
       ("jt" "Task" entry
-           (file+olp+datetree ,(owl/org-path "Journal.org"))
+           (file+olp+datetree ,(torresmo/org-path "Journal.org"))
            "\n* %<%I:%M %p> - Task Notes: %a\n\n%?\n\n"
            :tree-type week
            :clock-in :clock-resume
            :empty-lines 1)
       ("jj" "Journal" entry
-           (file+olp+datetree ,(owl/org-path "Journal.org"))
+           (file+olp+datetree ,(torresmo/org-path "Journal.org"))
            "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
            :tree-type week
            :clock-in :clock-resume
@@ -705,7 +705,7 @@ Tags are used to filter all tasks to find anything actionable in a particular co
 
 #+begin_src emacs-lisp
 
-  (owl/org-font-setup))
+  (torresmo/org-font-setup))
   
 #+end_src
 
@@ -728,13 +728,13 @@ We use [[https://github.com/joostkremers/visual-fill-column][visual-fill-column]
 
 #+begin_src emacs-lisp
 
-  (defun owl/org-mode-visual-fill ()
+  (defun torresmo/org-mode-visual-fill ()
     (setq visual-fill-column-width 100
           visual-fill-column-center-text t)
     (visual-fill-column-mode 1))
 
   (use-package visual-fill-column
-    :hook (org-mode . owl/org-mode-visual-fill))
+    :hook (org-mode . torresmo/org-mode-visual-fill))
   
 #+end_src
 
@@ -754,7 +754,7 @@ We use [[https://github.com/joostkremers/visual-fill-column][visual-fill-column]
 
 #+begin_src emacs-lisp
 
-  (defun owl/org-babel-tangle-config ()
+  (defun torresmo/org-babel-tangle-config ()
     (when (and buffer-file-name
                (string-equal "Emacs.org" (file-name-nondirectory buffer-file-name))
                (let ((dotfiles-dir (locate-dominating-file buffer-file-name "dotfiles")))
@@ -764,7 +764,7 @@ We use [[https://github.com/joostkremers/visual-fill-column][visual-fill-column]
       (let ((org-confirm-babel-evaluate nil))
         (org-babel-tangle))))
       
-  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'owl/org-babel-tangle-config)))
+  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'torresmo/org-babel-tangle-config)))
 #+end_src
 
 *** Structure Templates
@@ -790,7 +790,7 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
 
 #+begin_src emacs-lisp
 
-  (defun owl/search-org-files ()
+  (defun torresmo/search-org-files ()
     (interactive)
     (counsel-rg "" "~/Workspaces/Personal/Notes" nil "Search Notes: "))
 
@@ -809,7 +809,7 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
 
-  (owl/leader-keys
+  (torresmo/leader-keys
     "o"   '(:ignore t :which-key "org mode")
 
     "oi"  '(:ignore t :which-key "insert")
@@ -817,7 +817,7 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
 
     "on"  '(org-toggle-narrow-to-subtree :which-key "toggle narrow")
 
-    "os"  '(owl/search-org-files :which-key "search notes")
+    "os"  '(torresmo/search-org-files :which-key "search notes")
 
     "oa"  '(org-agenda :which-key "status")
     "ot"  '(org-todo-list :which-key "todos")
@@ -853,7 +853,7 @@ To simulate Doom Emacs Workspace management we use [[https://github.com/emacsmir
     (setq eyebrowse-keymap-prefix (kbd "C-c C-w"))
     (global-set-key (kbd "C-c w") 'eyebrowse-switch-to-window-config))
     
-  (owl/leader-keys
+  (torresmo/leader-keys
     "TAB" '(:ignore t :which-key "Workspaces")
     "TAB a" '(eyebrowse-switch-to-window-config :which-key "Select Workspace")
     "TAB r" '(eyebrowse-rename-window-config :which-key "Rename Workspace")
@@ -867,7 +867,7 @@ For better code navigation I added keybidings for manage bookmarks
 
 #+begin_src emacs-lisp
 
-  (owl/leader-keys
+  (torresmo/leader-keys
     "RET" '(:ignore t :which-key "Bookmarks")
     "RET RET" '(counsel-bookmark :which-key "Create or jump to Bookmark")
     "RET d" '(bookmark-delete :wich-key "Delete Bookmark"))
@@ -908,7 +908,7 @@ I love [[https://google.com][Google]] so using this package I can create queries
 
 #+begin_src emacs-lisp
 
-  (owl/leader-keys
+  (torresmo/leader-keys
     "s" '(:ignore t :which-key "Search")
     "ss" '(google-this-search :which-key "Search on Google")
     "sw" '(google-this-forecast :wich-key "Weather"))
@@ -943,7 +943,7 @@ Function to decode jwt tokens and parse to json
 
 #+begin_src emacs-lisp
 
-  (owl/leader-keys
+  (torresmo/leader-keys
     "mj" '(jwt-decode :wich-key "JWT decode"))
 
 #+end_src
@@ -954,7 +954,7 @@ Function to decode jwt tokens and parse to json
 
 #+begin_src emacs-lisp
 
-  (owl/leader-keys
+  (torresmo/leader-keys
     "a"  '(:ignore t :which-key "apps"))
 
 #+end_src
@@ -977,7 +977,7 @@ Function to decode jwt tokens and parse to json
             ("https://this-week-in-rust.org/rss.xml" engineering rust)
             ("https://os.phil-opp.com/rss.xml" engineering rust))))
 
-  (owl/leader-keys
+  (torresmo/leader-keys
     "ae" '(:ignore t :which-key "elfeed")
     "aee" '(elfeed :which-key "elfeed")
     "aeu" '(elfeed-update :which-key "elfeed-update")
@@ -1000,7 +1000,7 @@ For IA integration we are using [[https://github.com/karthink/gptel][gptel]], a 
                                          :stream t
                                          :key (lambda () (auth-source-pick-first-password :host "api.anthropic.com")))))
 
-  (owl/leader-keys
+  (torresmo/leader-keys
     "aa" '(:ignore t :which-key "IA assistant")
     "aac" '(gptel :which-key "Chat")
     "aaf" '(gptel-add-file :which-key "Add file")
@@ -1033,7 +1033,7 @@ For IA integration we are using [[https://github.com/karthink/gptel][gptel]], a 
     :after projectile
     :config (counsel-projectile-mode))
     
-  (owl/leader-keys
+  (torresmo/leader-keys
     "p" '(:ignore t :which-key "Projectile")
     "pp" '(projectile-switch-project :which-key "Switch Project")) 
 
@@ -1045,7 +1045,7 @@ For IA integration we are using [[https://github.com/karthink/gptel][gptel]], a 
 
 #+begin_src emacs-lisp
 
-  (defun owl/magit-bury-buffer (&optional kill-buffer)
+  (defun torresmo/magit-bury-buffer (&optional kill-buffer)
     (interactive "P")
     (if (>= (prefix-numeric-value kill-buffer) 1)
         (mapc #'kill-buffer (magit-mode-get-buffers))
@@ -1056,9 +1056,9 @@ For IA integration we are using [[https://github.com/karthink/gptel][gptel]], a 
     :custom
     (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
     :config
-    (setq magit-bury-buffer-function #'owl/magit-bury-buffer))
+    (setq magit-bury-buffer-function #'torresmo/magit-bury-buffer))
   
-  (owl/leader-keys
+  (torresmo/leader-keys
     "g"   '(:ignore t :which-key "magit")
 
     "gg"  '(magit-status :which-key "magit-status")
@@ -1094,7 +1094,7 @@ For better code visibility whitout open Magit
 
 #+begin_src emacs-lisp
 
-  (add-hook 'global-highlight-changes-mode-hook #'my-highlight-changes-config)
+  (add-hook 'global-highlight-changes-mode-hook #'torresmo-highlight-changes-config)
   (global-highlight-changes-mode t)
   (setq highlight-changes-visibility-initial-state nil)
   (global-set-key (kbd "<f6>") 'highlight-changes-visible-mode)
@@ -1158,7 +1158,7 @@ Useful keybidings for interacting with LSP modes
 
 #+begin_src emacs-lisp
 
-  (owl/leader-keys
+  (torresmo/leader-keys
     "l" '(:ignore t :which-key "LSP")
     "lr" '(lsp-rename :which-key "Rename")
     "ld" '(lsp-describe-thing-at-point :which-key "Describe thing")
@@ -1258,7 +1258,7 @@ Emacs integrates with gdb and lldb via the [[https://emacs-lsp.github.io/dap-mod
 
 #+begin_src emacs-lisp
 
-  (owl/leader-keys
+  (torresmo/leader-keys
     "d"   '(:ignore t :which-key "Debugg")
 
     "ds"  '(dap-debug :which-key "Debugger")
@@ -1414,7 +1414,7 @@ Using keybidings to easy launch terms
 
 #+begin_src emacs-lisp
 
-  (owl/leader-keys
+  (torresmo/leader-keys
     "t" '(:ignore t :which-key "terminal")
 
     "tv" '(vterm :which-key "vterm")

@@ -1501,9 +1501,6 @@ Using keybidings to easy launch terms
       "h" 'dired-single-up-directory
       "l" 'dired-single-buffer))
 
-  (use-package dired-single
-    :commands (dired dired-jump))
-
   (use-package all-the-icons-dired
     :hook (dired-mode . all-the-icons-dired-mode))
 

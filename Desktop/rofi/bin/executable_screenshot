@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# Import Current Theme
+RASI="$HOME/.config/rofi/screenshot.rasi"
+
+getTargetDirectory() {
+	test -f "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs" &&
+		. "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs"
+
+	if [[ ! $XDG_SCREENSHOTS_DIR ]]; then
+		XDG_SCREENSHOTS_DIR=$XDG_PICTURES_DIR/Screenshots
+		echo "XDG_SCREENSHOTS_DIR=$XDG_SCREENSHOTS_DIR" >>$HOME/.config/user-dirs.dirs
+	fi
+
+	echo "${XDG_SCREENSHOTS_DIR:-${XDG_PICTURES_DIR:-$HOME}}"
+}
+
+# Theme Elements
+prompt='Screenshot'
+mesg="Directory :: $(getTargetDirectory)"
+
+# Options
+layout=$(cat ${RASI} | grep 'USE_ICON' | cut -d'=' -f2)
+option_1="󰊓 Capture Desktop"
+option_2="󱣵 Capture Area"
+option_3=" Capture Window"
+option_4=" Capture in 5s"
+rofi_cmd() {
+	rofi -dmenu \
+		-p "$prompt" \
+		-mesg "$mesg" \
+		-markup-rows \
+		-theme ${RASI}
+}
+
+# Pass variables to rofi dmenu
+run_rofi() {
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4" | rofi_cmd
+}
+
+# countdown
+countdown() {
+	for sec in $(seq $1 -1 1); do
+		dunstify -t 1000 -h string:x-dunst-stack-tag:screenshottimer -i /usr/share/icons/Dracula/scalable/apps/time.svg "Taking shot in : $sec"
+		sleep 1
+	done
+}
+
+# take shots
+shotnow() {
+	sleep 1 && grimblast --cursor --notify --freeze copysave output
+}
+
+shot5() {
+	countdown '5'
+	sleep 0.5 && grimblast --cursor --notify --freeze copysave output
+}
+
+shotwin() {
+	sleep 0.5 && grimblast --cursor --notify --freeze copysave active
+	}
+
+shotarea() {
+	sleep 0.5 && grimblast --cursor --notify --freeze copysave area
+}
+
+# Execute Command
+run_cmd() {
+	if [[ "$1" == '--opt1' ]]; then
+		shotnow
+	elif [[ "$1" == '--opt2' ]]; then
+		shotarea
+	elif [[ "$1" == '--opt3' ]]; then
+		shotwin
+	elif [[ "$1" == '--opt4' ]]; then
+		shot5
+	fi
+}
+
+# Actions
+chosen="$(run_rofi)"
+case ${chosen} in
+$option_1)
+	run_cmd --opt1
+	;;
+$option_2)
+	run_cmd --opt2
+	;;
+$option_3)
+	run_cmd --opt3
+	;;
+$option_4)
+	run_cmd --opt4
+	;;
+esac

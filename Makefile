@@ -102,4 +102,6 @@ zsh-change-default-shell:
 
 	printf "\n${GREEN}-----------ZSH IS NOW THE DEFAULT SHELL-----------${RESET}"
 
+# TODO: Create function to install desktop config; It must cp the sym to desktop and run inside there.
+
 .SILENT: # this has no purpose but to prevent printfing of commands for all targets

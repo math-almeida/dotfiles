@@ -1378,6 +1378,17 @@ go install golang.org/x/tools/gopls@latest
 
 #+end_src
 
+** YAML
+
+Basic configuration for Ruby Language
+
+#+begin_src emacs-lisp
+
+  (use-package yaml-mode
+    :defer t)
+
+#+end_src
+
 * Terminal
 
 Configure terminal

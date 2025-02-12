@@ -1,1 +1,7 @@
-* WIP documentation
+#+title: =Desktop Config=
+#+AUTHOR: Matheus Almeida
+
+This configuration is using hyprland
+
+* References
+Hyprland Docs can be found [[https://wiki.hyprland.org][here]].

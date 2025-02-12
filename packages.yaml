@@ -1,0 +1,65 @@
+yay:
+  zsh:
+    - "yazi"
+    - "ueberzugpp"
+    - "dust"
+    - "bat"
+    - "p7zip"
+
+  hypr:
+    - "hyprland"
+    - "xdg-desktop-portal-hyprland"
+    - "grimblast-git"
+    - "waybar"
+    - "rofi-wayland"
+    - "pavucontrol"
+    - "nwg-look"
+    - "kitty"
+    - "grim"
+    - "slurp"
+    - "pipewire"
+    - "pipewire-pulse"
+    - "wireplumber"
+    - "wl-clipboard"
+    - "pamixer"
+    - "dunst"
+    - "libnotify"
+    - "blueman"
+    - "brightnessctl"
+    - "hypridle"
+    - "waypaper"
+    - "hyprsunset"
+    - "swww"
+    - "network-manager-applet"
+    - "kwallet"
+    - "swaylock-effects"
+
+  fonts:
+    - "ttf-jetbrains-mono-nerd"
+    - "ttf-noto-nerd"
+    - "noto-fonts-emoji"
+    - "noto-fonts-extra"
+
+  themes:
+    - "catppuccin-gtk-theme-mocha"
+    - "kvantum"
+    - "catppuccin-cursors-mocha"
+
+  apps:
+    - "qbittorrent"
+    - "vivaldi"
+pacman:
+  zsh:
+    - "zsh"
+  symlink:
+    - "base-devel"
+    - "ruby" # We will purge this in the workflow
+  emacs:
+    - "emacs"
+    - "libvterm"
+    - "ripgrep"
+    - "the_silver_searcher"
+    - "cmake"
+  fonts:
+    - "cantarell-fonts"
+    - "ttf-fira-code"

@@ -165,6 +165,11 @@ I create some useful keybidings for jumping into especific configuration files.
   (defun torresmo/open-keyboard-file()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Keyboard/corne/corne.keymap")))
+  
+  ;; Open hyprland configuration file since it's where I define most of things
+  (defun torresmo/open-desktop-file()
+    (interactive)
+    (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Desktop/hypr/hyprland.conf")))
 
   (torresmo/leader-keys
       "c" '(:ignore t :which-key "Configuration")
@@ -172,6 +177,7 @@ I create some useful keybidings for jumping into especific configuration files.
       "cm" '(torresmo/open-makefile :which-key "Makefile")
       "ce" '(torresmo/open-emacs-file :which-key "Emacs")
       "ck" '(torresmo/open-keyboard-file :which-key "Keyboard")
+      "cd" '(torresmo/open-desktop-file :which-key "Desktop")
       "cz" '(torresmo/open-zsh-file :which-key "Zsh"))
 
 #+end_src
@@ -268,7 +274,7 @@ Variables to adjust in each system
   (defvar torresmo/default-variable-font-size 100)
 
   ;; Make frame transparency overridable
-  (defvar torresmo/frame-transparency '(100 . 100))
+  (defvar torresmo/frame-transparency '(90 . 90))
   
 #+end_src
 

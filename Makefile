@@ -47,8 +47,9 @@ arch-emacs-dependencies:
 
 # Hyprland
 hyprland: install-yay arch-symlink-dependencies hypr-install-desktop-packages
+	rm -rf ~/.config/hypr # Remove auto generated hypr config
 	cp symlinks.rb Desktop
-	ruby Desktop/symlinks.rb
+	cd Desktop && ruby symlinks.rb && cd ..
 	rm Desktop/symlinks.rb
 
 	printf "\n${GREEN}-----------HYPRLAND CONFIGURED-----------${RESET}"

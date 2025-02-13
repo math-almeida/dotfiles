@@ -3,16 +3,35 @@
 
 * About this Dotfiles
 
-This is the personal configuration of Torresmol, seeking the truth following the path of The Great Debugger God.
+This is the personal configuration of Torresmo, seeking the truth following the path of The Great Debugger God.
 If you have any suggestion fell free to open a Issue or send me a message on [[https://twitter.com/Math_Almeid][Twitter]]
 
 * Usage
 
 For use ou dotfiles you can run the symlink script or run just emacs in isolation mode for testing purposes.
+=Don't forget to change .gitconfig file to your configuration!=
 
 ** Torresmo Mode
 
-To install all dependencies and install the entire system just run the build script for your distro.
+Configure the entire system, including the desktop configuration.
+
+This script will: 
+ 
+- Configure hyprland and graphical environment
+- Configure dotfiles path moving the project and creating the required folders
+- Configure Emacs and his dependencies
+- Configure ZSH and his dependencies
+- Configure asdf
+
+#+begin_src sh
+
+make build
+  
+#+end_src
+
+** Portability Mode
+
+Configure the terminal, editor, and configuration files for your distro by running the corresponding build script.
 
 This script will: 
  
@@ -21,19 +40,19 @@ This script will:
 - Configure ZSH and his dependencies
 - Configure asdf
 
-*** Debian
+*** Debian based distros
 
 #+begin_src sh
 
-make deb-build
+make deb-based
 
 #+end_src
 
-*** Arch
+*** Arch based distros
 
 #+begin_src sh
 
-make arch-build
+make arch-based
 
 #+end_src
 

@@ -12,7 +12,7 @@ build:install-yay arch-symlink-dependencies hypr-install-desktop-packages arch-e
 	cp symlinks.rb Desktop && cd Desktop && ruby symlinks.rb && rm symlinks.rb
 	sudo pacman -Rs ruby --noconfirm # I told you
 
-	printf "${BLUE}Configuration complete, to run hyprland just type ${RED}Hyperland"
+	printf "${BLUE}Configuration complete, to run hyprland just type ${RED}hyperland"
 	printf "\n${GREEN}-----------INSTALATION FINISHED-----------${RESET}"
 
 # Arch based distros dependencies

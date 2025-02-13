@@ -5,11 +5,11 @@ BLUE='\033[0;34m'
 RESET='\033[0m'
 
 # Main configuration
-build: install-yay hyprland arch-emacs-dependencies construct-path
+build: hyprland arch-emacs-dependencies construct-path
 	@yq '.pacman.zsh' packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
 	@if [ -f "$$HOME/.zshrc" ]; then rm ~/.zshrc; fi
 	ruby symlinks.rb
-	sudo pacman -Rs ruby -- noconfirm # I told you
+	sudo pacman -Rs ruby --noconfirm # I told you
 
 	printf "${BLUE}Configuration complete, to run hyprland just type ${RED}Hyperland"
 	printf "\n${GREEN}-----------INSTALATION FINISHED-----------${RESET}"

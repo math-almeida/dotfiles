@@ -53,6 +53,8 @@ pacman:
     - "zsh"
   symlink:
     - "base-devel"
+    - "rsync"
+    - "coreutils"
     - "ruby" # We will purge this in the workflow
   emacs:
     - "emacs"

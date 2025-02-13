@@ -46,13 +46,8 @@ arch-emacs-dependencies:
 
 # Hyprland
 hyprland: install-yay arch-symlink-dependencies hypr-install-desktop-packages
-	rm -rf ~/.config/hypr # Remove auto generated hypr config
-	cp -r Desktop/hypr ~/.config/hypr # Yes, this is ugly but symlinks not work in this case
-	cp -r Desktop/rofi ~/.config/rofi
-	cp -r Desktop/swaylock ~/.config/swaylock
-	cp -r Desktop/waybar ~/.config/waybar
-	cp -r Desktop/yazi ~/.config/yazi
-	cp -r Desktop/kitty ~/.config/kitty
+	@if [ -f "$$HOME/.config/hypr" ]; then rm -rf ~/.config/hypr; fi # Remove auto generated hypr config
+	cp symlinks.rb Desktop && cd Desktop && ruby symlinks.rb && rm symlinks.rb
 
 	printf "\n${GREEN}-----------HYPRLAND CONFIGURED-----------${RESET}"
 

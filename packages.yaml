@@ -6,14 +6,17 @@ yay:
     - "bat"
     - "p7zip"
 
+  bluetooth:
+    - "bluez"
+    - "bluez-utils"
+
   hypr:
     - "hyprland"
     - "xdg-desktop-portal-hyprland"
     - "grimblast-git"
     - "waybar"
     - "rofi-wayland"
-    - "pavucontrol"
-    - "nwg-look"
+    - "pavucontrol" - "nwg-look"
     - "kitty"
     - "grim"
     - "slurp"
@@ -51,17 +54,20 @@ yay:
 pacman:
   zsh:
     - "zsh"
+
   symlink:
     - "base-devel"
     - "rsync"
     - "coreutils"
     - "ruby" # We will purge this in the workflow
+
   emacs:
     - "emacs"
     - "libvterm"
     - "ripgrep"
     - "the_silver_searcher"
     - "cmake"
+
   fonts:
     - "cantarell-fonts"
     - "ttf-fira-code"

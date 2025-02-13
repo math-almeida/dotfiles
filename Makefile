@@ -5,9 +5,11 @@ BLUE='\033[0;34m'
 RESET='\033[0m'
 
 # Main configuration
-build: hyprland arch-emacs-dependencies construct-path zsh-change-default-shell
+build:install-yay arch-symlink-dependencies hypr-install-desktop-packages arch-emacs-dependencies construct-path zsh-change-default-shell
 	@if [ -f "$$HOME/.zshrc" ]; then rm ~/.zshrc; fi
+	@if [ -f "$$HOME/.config/hypr" ]; then rm -rf ~/.config/hypr; fi # Remove auto generated hypr config
 	ruby symlinks.rb
+	cp symlinks.rb Desktop && cd Desktop && ruby symlinks.rb && rm symlinks.rb
 	sudo pacman -Rs ruby --noconfirm # I told you
 
 	printf "${BLUE}Configuration complete, to run hyprland just type ${RED}Hyperland"
@@ -16,8 +18,7 @@ build: hyprland arch-emacs-dependencies construct-path zsh-change-default-shell
 # Arch based distros dependencies
 arch-based: install-yay arch-emacs-dependencies arch-symlink-dependencies construct-path
 	@yq '.pacman.zsh' packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
-	@if [ -f "$$HOME/.zshrc" ]; then rm ~/.zshrc; fi
-	ruby symlinks.rb
+	@if [ -f "$$HOME/.zshrc" ]; then rm ~/.zshrc; fi ruby symlinks.rb
 	sudo pacman -Rs ruby -- noconfirm # I told you
 
 	make zsh-change-default-shell
@@ -45,12 +46,6 @@ arch-emacs-dependencies:
 	printf "\n${GREEN}-----------EMACS DEPENDENCIES FINISHED-----------${RESET}"
 
 # Hyprland
-hyprland: install-yay arch-symlink-dependencies hypr-install-desktop-packages
-	@if [ -f "$$HOME/.config/hypr" ]; then rm -rf ~/.config/hypr; fi # Remove auto generated hypr config
-	cp symlinks.rb Desktop && cd Desktop && ruby symlinks.rb && rm symlinks.rb
-
-	printf "\n${GREEN}-----------HYPRLAND CONFIGURED-----------${RESET}"
-
 hypr-install-desktop-packages:
 	printf "\n${GREEN}-----------INSTALING DESKTOP PACKAGES-----------${RESET}"
 

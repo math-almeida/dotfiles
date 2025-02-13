@@ -19,6 +19,7 @@ build:install-yay arch-symlink-dependencies hypr-install-desktop-packages arch-e
 arch-based: install-yay arch-emacs-dependencies arch-symlink-dependencies construct-path
 	@yq '.pacman.zsh' packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
 	@if [ -f "$$HOME/.zshrc" ]; then rm ~/.zshrc; fi ruby symlinks.rb
+	ruby symlinks.rb
 	sudo pacman -Rs ruby -- noconfirm # I told you
 
 	make zsh-change-default-shell

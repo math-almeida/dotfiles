@@ -5,8 +5,7 @@ BLUE='\033[0;34m'
 RESET='\033[0m'
 
 # Main configuration
-build: hyprland arch-emacs-dependencies construct-path
-	@yq '.pacman.zsh' packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
+build: hyprland arch-emacs-dependencies construct-path zsh-change-default-shell
 	@if [ -f "$$HOME/.zshrc" ]; then rm ~/.zshrc; fi
 	ruby symlinks.rb
 	sudo pacman -Rs ruby --noconfirm # I told you
@@ -126,6 +125,7 @@ construct-path:
 zsh-change-default-shell:
 	printf "\n${GREEN}-----------CHANGING DEFAULT SHELLL-----------${RESET}"
 
+	@yq '.pacman.zsh' packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
 	chsh -s /usr/bin/zsh
 
 	printf "\n${GREEN}-----------ZSH IS NOW THE DEFAULT SHELL-----------${RESET}"

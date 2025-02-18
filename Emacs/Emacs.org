@@ -802,6 +802,21 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
 
 #+end_src
 
+*** Paste images from clipboard
+Use  =org-download= to paste images from clipboard and put in a directory with the org document
+
+#+begin_src emacs-lisp
+
+  (use-package org-download
+    :ensure t
+    :config
+    (setq org-download-method 'directory)
+    (setq org-download-image-dir "./images")
+    (add-hook 'dired-mode-hook 'org-download-enable)
+    (add-hook 'org-mode-hook 'org-download-enable))
+  
+#+end_src
+
 *** Bindings
 
 #+begin_src emacs-lisp
@@ -824,6 +839,8 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
     "on"  '(org-toggle-narrow-to-subtree :which-key "toggle narrow")
 
     "os"  '(torresmo/search-org-files :which-key "search notes")
+    
+    "op"  '(org-download-clipboard :which-key "Paste image")
 
     "oa"  '(org-agenda :which-key "status")
     "ot"  '(org-todo-list :which-key "todos")

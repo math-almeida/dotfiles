@@ -807,15 +807,25 @@ Use  =org-download= to paste images from clipboard and put in a directory with t
 
 #+begin_src emacs-lisp
 
+  (defun torresmo/org-download-image-dir ()
+    (when buffer-file-name 
+      (let* ((parent-dir (file-name-directory (directory-file-name (file-name-directory buffer-file-name))))
+             (image-dir (expand-file-name "images" parent-dir)))
+        (unless (file-exists-p image-dir)
+          (make-directory image-dir t))
+        image-dir)))
+
   (use-package org-download
     :ensure t
     :config
     (setq org-download-method 'directory)
-    (setq org-download-image-dir "./images")
+
+    (advice-add 'org-download--dir :override #'torresmo/org-download-image-dir)
+
     (add-hook 'dired-mode-hook 'org-download-enable)
     (add-hook 'org-mode-hook 'org-download-enable))
   
-#+end_src
+  #+end_src
 
 *** Bindings
 
@@ -1566,3 +1576,4 @@ Using keybidings to easy launch terms
 *** Dotfiles
 
 [[https://github.com/daviwil/dotfiles/blob/9776d65c4486f2fa08ec60a06e86ecb6d2c40085/Emacs.org][David Wilson dotfiles]] - The real path to GNUrvana
+

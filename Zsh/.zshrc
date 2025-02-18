@@ -13,6 +13,7 @@ source ~/.zplug/init.zsh
 source "$ZSH_DOTFILES/zsh_custom/common_aliases.zsh"
 source "$ZSH_DOTFILES/zsh_custom/docker.plugin.zsh"
 source "$ZSH_DOTFILES/zsh_custom/common_paths.zsh"
+source "$ZSH_DOTFILES/zsh_custom/functions.zsh"
 
 # Zplug plugins
 zplug "zsh-users/zsh-syntax-highlighting", defer:2 

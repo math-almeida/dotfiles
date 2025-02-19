@@ -165,11 +165,15 @@ I create some useful keybidings for jumping into especific configuration files.
   (defun torresmo/open-keyboard-file()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Keyboard/corne/corne.keymap")))
-  
+
   ;; Open hyprland configuration file since it's where I define most of things
   (defun torresmo/open-desktop-file()
     (interactive)
     (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/Desktop/hypr/hyprland.conf")))
+  
+  (defun torresmo/open-packages-file()
+    (interactive)
+    (find-file (expand-file-name "~/Workspaces/Personal/dotfiles/packages.yaml")))
 
   (torresmo/leader-keys
       "c" '(:ignore t :which-key "Configuration")
@@ -178,6 +182,7 @@ I create some useful keybidings for jumping into especific configuration files.
       "ce" '(torresmo/open-emacs-file :which-key "Emacs")
       "ck" '(torresmo/open-keyboard-file :which-key "Keyboard")
       "cd" '(torresmo/open-desktop-file :which-key "Desktop")
+      "cp" '(torresmo/open-packages-file :which-key "Packages")
       "cz" '(torresmo/open-zsh-file :which-key "Zsh"))
 
 #+end_src

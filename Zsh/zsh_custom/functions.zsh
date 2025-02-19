@@ -90,3 +90,26 @@ function explain() {
   END {print ""}
 ')\n"
 }
+
+# Function to install especific packages
+function ynstall() {
+    if ! command -v yq &> /dev/null; then
+        echo "Error: 'yq' is not installed. Please install it to run this command."
+        exit 1
+    fi
+
+    if [ -z "$1" ]; then
+        echo "Install specific group of packages from packages.yaml"
+        echo "Packages file can be found in dotfiles root"
+        return 1
+    fi
+
+    if [ "$1" = "yay" ]; then
+        sudo yq ".yay.$2" ~/Workspaces/Personal/dotfiles/packages.yaml | tr -d '[],"' | xargs yay -S --noconfirm 
+    elif [ "$1" = "pacman" ]; then
+        sudo yq ".pacman.$2" ~/Workspaces/Personal/dotfiles/packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
+    else
+        echo "Invalid option: $1. Use 'yay' or 'pacman'."
+        return 1
+    fi
+}

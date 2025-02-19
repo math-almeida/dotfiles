@@ -16,7 +16,8 @@ yay:
     - "grimblast-git"
     - "waybar"
     - "rofi-wayland"
-    - "pavucontrol" - "nwg-look"
+    - "pavucontrol"
+    - "nwg-look"
     - "kitty"
     - "grim"
     - "slurp"
@@ -51,6 +52,7 @@ yay:
   apps:
     - "qbittorrent"
     - "vivaldi"
+
 pacman:
   zsh:
     - "zsh"

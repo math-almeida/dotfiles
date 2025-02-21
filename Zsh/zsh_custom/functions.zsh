@@ -113,3 +113,23 @@ function ynstall() {
         return 1
     fi
 }
+
+# Function to update system based on distro
+function update() {
+    local distro="$(head -n 1 /etc/os-release | cut -d "=" -f2 | tr -d '", ')"
+    if [ "$distro" = "ArchLinux" ]; then
+	if command -v yay &> /dev/null; then
+	    echo "Updating system with yay\n"
+	    yay -Syu --noconfirm && sudo pacman --noconfirm -Rns $(pacman -Qdtq)
+	else
+	    echo "Updating system with pacman\n"
+	    sudo pacman -Syu --noconfirm && sudo pacman --noconfirm -Rns $(pacman -Qdtq) 
+	fi
+    elif ["$distro" = "Ubuntu"]
+	echo "Updating system with apt\n"
+	sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
+    else
+	echo "Your Linux distribution was not recognized. Please update the system manually."
+	return 1
+    fi
+}

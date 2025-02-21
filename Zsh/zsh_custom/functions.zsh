@@ -125,7 +125,7 @@ function update() {
 	    echo "Updating system with pacman\n"
 	    sudo pacman -Syu --noconfirm && sudo pacman --noconfirm -Rns $(pacman -Qdtq) 
 	fi
-    elif ["$distro" = "Ubuntu"]
+    elif ["$distro" = "Ubuntu"]; then
 	echo "Updating system with apt\n"
 	sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
     else

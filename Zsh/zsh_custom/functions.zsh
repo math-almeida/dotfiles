@@ -120,14 +120,18 @@ function update() {
     if [ "$distro" = "ArchLinux" ]; then
 	if command -v yay &> /dev/null; then
 	    echo "Updating system with yay."
-	    yay -Syu --noconfirm && sudo pacman --noconfirm -Rns $(pacman -Qdtq)
+	    yay -Syu --noconfirm
+	    sudo pacman --noconfirm -Rns $(pacman -Qdtq) 2> /dev/null
 	else
 	    echo "Updating system with pacman."
-	    sudo pacman -Syu --noconfirm && sudo pacman --noconfirm -Rns $(pacman -Qdtq) 
+	    sudo pacman -Syu --noconfirm
+	    sudo pacman --noconfirm -Rns $(pacman -Qdtq) 2> /dev/null
 	fi
     elif ["$distro" = "Ubuntu"]; then
 	echo "Updating system with apt."
-	sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
+	sudo apt update -y
+	sudo apt upgrade -y
+	sudo apt autoremove -y
     else
 	echo "Your Linux distribution was not recognized. Please update the system manually."
 	return 1

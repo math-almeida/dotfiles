@@ -119,14 +119,14 @@ function update() {
     local distro="$(head -n 1 /etc/os-release | cut -d "=" -f2 | tr -d '", ')"
     if [ "$distro" = "ArchLinux" ]; then
 	if command -v yay &> /dev/null; then
-	    echo "Updating system with yay\n"
+	    echo "Updating system with yay."
 	    yay -Syu --noconfirm && sudo pacman --noconfirm -Rns $(pacman -Qdtq)
 	else
-	    echo "Updating system with pacman\n"
+	    echo "Updating system with pacman."
 	    sudo pacman -Syu --noconfirm && sudo pacman --noconfirm -Rns $(pacman -Qdtq) 
 	fi
     elif ["$distro" = "Ubuntu"]; then
-	echo "Updating system with apt\n"
+	echo "Updating system with apt."
 	sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
     else
 	echo "Your Linux distribution was not recognized. Please update the system manually."

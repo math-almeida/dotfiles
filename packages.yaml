@@ -53,6 +53,16 @@ yay:
     - "qbittorrent"
     - "vivaldi"
 
+  printer:
+    - "cups"
+    - "system-config-printer"
+    - "ghostscript"
+    - "gsfonts"
+    - "gutenprint"
+    - "cups-filters"
+    - "libusb"
+    - "xerox-phaser-3020" # My printer at this time
+
 pacman:
   zsh:
     - "zsh"

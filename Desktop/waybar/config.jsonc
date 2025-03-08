@@ -75,7 +75,7 @@
   "memory": {
     "on-click": "",
     "interval": 5,
-    "format": " {used:0.1f}G/{total:0.1f}G",
+    "format": " {percentage}%"
   },
   "temperature": {
     "thermal-zone": 2,

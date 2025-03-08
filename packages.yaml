@@ -63,6 +63,10 @@ yay:
     - "libusb"
     - "xerox-phaser-3020" # My printer at this time
 
+  switch:
+    - "simple-mtpfs"
+    - "dolphin" # We need dolphin since yazi cannot identify DBI folder
+
 pacman:
   zsh:
     - "zsh"

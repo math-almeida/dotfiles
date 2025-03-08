@@ -121,7 +121,6 @@ construct-path:
 zsh-change-default-shell:
 	printf "\n${GREEN}-----------CHANGING DEFAULT SHELLL-----------${RESET}"
 
-	@yq '.pacman.zsh' packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
 	chsh -s /usr/bin/zsh
 
 	printf "\n${GREEN}-----------ZSH IS NOW THE DEFAULT SHELL-----------${RESET}"

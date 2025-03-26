@@ -47,10 +47,20 @@ arch-emacs-dependencies:
 
 	printf "\n${GREEN}-----------EMACS DEPENDENCIES FINISHED-----------${RESET}"
 
+arch-docker:
+	printf "\n${GREEN}-----------INSTALING DOCKER ON ARCH-----------${RESET}"
+
+	@yq '.yay.docker' packages.yaml | tr -d '[],"' | xargs yay -S --noconfirm
+	sudo usermod -aG docker $$USER
+	sudo systemctl enable docker
+
+	printf "${BLUE}Docker configuration complete, reboot the system to complete setup"
+
 # Hyprland
 hypr-install-desktop-packages:
 	printf "\n${GREEN}-----------INSTALING DESKTOP PACKAGES-----------${RESET}"
 
+	@yq '.pacman.zsh' packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
 	@yq '.yay.zsh' packages.yaml | tr -d '[],"' | xargs yay -S --noconfirm
 	@yq '.yay.bluetooth' packages.yaml | tr -d '[],"' | xargs yay -S --noconfirm
 	@yq '.yay.hypr' packages.yaml | tr -d '[],"' | xargs yay -S --noconfirm

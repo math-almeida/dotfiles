@@ -67,6 +67,10 @@ yay:
     - "simple-mtpfs"
     - "dolphin" # We need dolphin since yazi cannot identify DBI folder
 
+  docker:
+    - "docker"
+    - "docker-compose"
+
 pacman:
   zsh:
     - "zsh"

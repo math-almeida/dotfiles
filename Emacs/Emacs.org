@@ -1432,7 +1432,9 @@ Basic configuration for Ruby Language
 Basic configuration for Python language
 
 #+begin_src emacs-lisp
+  
   (use-package python-mode
+    :ensure nil
     :mode "\\.py\\'"
     :hook (python-mode . lsp)
     :config
@@ -1440,7 +1442,7 @@ Basic configuration for Python language
     (setq python-indent-offset 4)
     (setq python-fill-column 79)
     (setq python-shell-interpreter "python3"))
-  
+
 #+end_src
 
 * Server

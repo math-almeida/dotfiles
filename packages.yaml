@@ -13,7 +13,7 @@ yay:
   hypr:
     - "hyprland"
     - "xdg-desktop-portal-hyprland"
-    - "grimblast-git"
+    - "swappy"
     - "waybar"
     - "rofi-wayland"
     - "pavucontrol"
@@ -37,6 +37,7 @@ yay:
     - "network-manager-applet"
     - "kwallet"
     - "swaylock-effects"
+    - "xdg-user-dirs"
 
   fonts:
     - "ttf-jetbrains-mono-nerd"

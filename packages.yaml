@@ -5,6 +5,7 @@ yay:
     - "dust"
     - "bat"
     - "p7zip"
+    - "bottom"
 
   bluetooth:
     - "bluez"
@@ -72,7 +73,7 @@ yay:
     - "docker"
     - "docker-compose"
 
-  python-dev:
+  python:
     - "python-pip"
     - "python-pip3"
     - "python-virtualenv"

@@ -20,6 +20,7 @@ arch-based: install-yay arch-emacs-dependencies arch-symlink-dependencies constr
 	@yq '.pacman.zsh' packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
 	@if [ -f "$$HOME/.zshrc" ]; then rm ~/.zshrc; fi ruby symlinks.rb
 	cp Desktop/Dirs/user-dirs.dirs ~/.config/user-dirs.dirs # Copy default folders location
+	cp Desktop/Locale/locale.conf ~/.config/locale.conf # Copy default localse config
 	ruby symlinks.rb
 	sudo pacman -Rs ruby -- noconfirm # I told you
 

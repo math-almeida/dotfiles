@@ -7,6 +7,9 @@ yay:
     - "p7zip"
     - "bottom"
 
+  symlink:
+    - "asdf-vm"
+
   bluetooth:
     - "bluez"
     - "bluez-utils"

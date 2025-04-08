@@ -35,7 +35,7 @@ arch-symlink-dependencies:
 	printf "\n${GREEN}-----------INSTALING SYMLINK DEPENDENCIES-----------${RESET}"
 
 	@yq '.pacman.symlink' packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
+	@yq '.yay.symlink' packages.yaml | tr -d '[],"' | xargs yay -S --noconfirm
 
 	printf "\n${GREEN}-----------SYMLINK DEPENDENCIES FINISHED-----------${RESET}"
 

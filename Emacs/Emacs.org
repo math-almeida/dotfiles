@@ -1311,6 +1311,19 @@ Emacs integrates with gdb and lldb via the [[https://emacs-lsp.github.io/dap-mod
 *** Errors
 The  =(dap-gdb-lldb-setup)= will install a VS Code extension to =user-emacs-dir/.extension/vscode/webfreak.debug= . If the installation was not successful we need to delete =vscode/= folder and run =(dap-gdb-lldb-setup)= again.
 
+** GUI environment
+
+When launching Emacs from a GUI ir doesn't start a login shell. This means shell configuration files and important environment variables (like those added by =asdf=) may not be available inside Emacs.
+The [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]] solves this invoking a non-interactive shell and importing the environment variables into Emacs.
+
+#+begin_src emacs-lisp
+
+  (use-package exec-path-from-shell
+    :config
+    (exec-path-from-shell-copy-env "PATH"))
+
+#+end_src
+
 * Languages
 
 ** Ruby
@@ -1374,7 +1387,7 @@ Basic configuration for Rust language
 
   (use-package cargo
     :defer t)
-  
+
 #+end_src
 
 *** Server

@@ -1446,24 +1446,20 @@ Basic configuration for Python language
 
 #+begin_src emacs-lisp
   
-  (use-package python-mode
-    :ensure nil
-    :mode "\\.py\\'"
+  (use-package lsp-pyright
     :hook (python-mode . lsp)
     :config
-    (setq lsp-python-ms-executable "pylsp")
-    (setq python-indent-offset 4)
-    (setq python-fill-column 79)
-    (setq python-shell-interpreter "python3"))
+    (setq lsp-pyright-typechecking-mode "basic")
+    (setq lsp-pyright-python-executable-cmd "python3"))
 
 #+end_src
 
-* Server
+*** Server
 
 #+begin_src sh
-
-  pip install python-lsp-server
   
+  npm install -g npm@11.3.0
+    
 #+end_src
 * Terminal
 

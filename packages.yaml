@@ -81,6 +81,10 @@ yay:
     - "python-pip3"
     - "python-virtualenv"
 
+  debug:
+    - "dbeaver-ce-bin"
+    - "postman-bin"
+
 pacman:
   zsh:
     - "zsh"

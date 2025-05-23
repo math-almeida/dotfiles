@@ -138,3 +138,11 @@ function update() {
 	return 1
     fi
 }
+
+# Function to restart and build containers in a single command
+function cresb() {
+    echo "Shuting down containers"
+    docker-compose down "$@"
+    echo "Building containers"
+    docker-compose up -d --build "$@"
+}

@@ -10,7 +10,7 @@ mesg="Uptime : $(uptime -p | sed -e 's/up //g')"
 
 # Options
 option_1="<span size='xx-large' rise='-2000'></span> Lock"
-option_2="<span size='xx-large'>󰗼</span> Logout"
+option_2="<span size='xx-large'>󰗼</span> Exit"
 option_3="<span size='large' rise='-1000'></span> Suspend"
 option_4="<span size='xx-large'>⏼</span> Hibernate"
 option_5="<span size='xx-large'></span> Reboot"
@@ -61,10 +61,10 @@ confirm_run() {
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
 		# lock
-		swaylock --effect-blur 7x2 --screenshot --fade-in 0.5
+		swaylock 
 	elif [[ "$1" == '--opt2' ]]; then
-		# logout
-		confirm_run 'hyprctl dispatch exit'
+		# exit
+		confirm_run 'killall hyprland'
 	elif [[ "$1" == '--opt3' ]]; then
 		#suspend
 		confirm_run 'systemctl suspend'

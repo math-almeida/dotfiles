@@ -8,6 +8,3 @@ alias ghistory="history | grep"
 
 # Isolate emacs shortcut
 alias isolation="sh ~/Workspaces/Personal/dotfiles/Emacs/run-emacs.sh"
-
-# Vpn shortcuts
-alias tailstatus="tailscale status"

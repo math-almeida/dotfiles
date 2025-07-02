@@ -1,15 +1,3 @@
-# Function to start vpn
-function tailstart() {
-    sudo tailscale up --accept-routes
-    echo "Tailscale started successfully"
-}
-
-# Function to stop vpn
-function tailstop() {
-    sudo tailscale down
-    echo "Tailscale stoped"
-}
-
 # Function for zsh statistics about more used commands
 function zsh_stats() {
   fc -l 1 \
@@ -145,4 +133,14 @@ function cresb() {
     docker-compose down "$@"
     echo "Building containers"
     docker-compose up -d --build "$@"
+}
+
+# Function to check port usage
+function cport() {
+    echo "Checking port $1"
+    if sudo lsof -i :"$1" | grep -q .; then
+	sudo lsof -i :"$1"
+    else
+	echo "Nothing running in $1"
+    fi
 }

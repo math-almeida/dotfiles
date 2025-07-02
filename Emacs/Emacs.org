@@ -265,6 +265,20 @@ Create jumping around things and simplify code navigation
 
 #+end_src
 
+*** Narrow regions
+
+We can narrow a region to restrict editing the buffer in the selected region
+
+#+begin_src emacs-lisp
+
+  (torresmo/leader-keys 
+    "n" '(:ignore t :which-key "Narrow")
+    "nn" '(narrow-to-region :which-key "Narrow region")
+    "nw" '(widen :which-key "Widen")
+    )
+
+#+end_src
+
 * UI Configuration
 
 This section configures UI settings and defines the apparence of the Editor.

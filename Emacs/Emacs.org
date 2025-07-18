@@ -1037,16 +1037,16 @@ Function to decode jwt tokens and parse to json
 
 #+end_src
 
-** IA with Claude
+** IA
 
-For IA integration we are using [[https://github.com/karthink/gptel][gptel]], a awesome LLM client to Emacs, since my current company provides me Antrophic api-key, I will use Claude as AI assistant.
+For IA integration we are using [[https://github.com/karthink/gptel][gptel]], a awesome LLM client to Emacs.
 
 #+begin_src emacs-lisp
 
   (use-package gptel
     :config
     (setq
-     gptel-model "claude-3-sonnet-20240229"
+     gptel-model "claude-sonnet-4-20250514"
      gptel-default-mode 'org-mode
      gptel-backend (gptel-make-anthropic "Claude"
                                          :stream t

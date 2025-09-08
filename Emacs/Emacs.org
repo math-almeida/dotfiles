@@ -808,6 +808,7 @@ These templates enable you to type things like =<el= and then hit =Tab= to expan
   (add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
   (add-to-list 'org-structure-template-alist '("json" . "src json"))
   (add-to-list 'org-structure-template-alist '("sql" . "src sql"))
+  (add-to-list 'org-structure-template-alist '("tf" . "src terraform"))
 
 #+end_src
 

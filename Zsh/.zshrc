@@ -10,6 +10,7 @@ fi
 source ~/.zplug/init.zsh
 
 # Custom Plugins
+source "$ZSH_DOTFILES/zsh_custom/terraform.plugin.zsh"
 source "$ZSH_DOTFILES/zsh_custom/common_aliases.zsh"
 source "$ZSH_DOTFILES/zsh_custom/docker.plugin.zsh"
 source "$ZSH_DOTFILES/zsh_custom/common_paths.zsh"

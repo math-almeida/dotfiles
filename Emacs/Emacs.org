@@ -1476,6 +1476,21 @@ Basic configuration for Python language
   npm install -g npm@11.3.0
     
 #+end_src
+** Powershell
+
+Basic configuration for Powershell language
+
+#+begin_src emacs-lisp
+
+  (use-package powershell
+    :mode ("\\.ps1\\'" . powershell-mode)
+    :config
+    ;; Indentação padrão (4 espaços)
+    (setq powershell-indent 4)
+    (setq powershell-power-shell-exe "pwsh"))
+  
+#+end_src
+
 * Terminal
 
 Configure terminal

@@ -72,6 +72,7 @@ yay:
     - "simple-mtpfs"
     - "dolphin" # We need dolphin since yazi cannot identify DBI folder
 
+# Optional groups of packages
   docker:
     - "docker"
     - "docker-compose"
@@ -84,6 +85,21 @@ yay:
   debug:
     - "dbeaver-ce-bin"
     - "postman-bin"
+
+  vpn:
+    - "openvpn"
+
+  pen-network:
+    - "openbsd-netcat"
+    - "gobuster"
+    - "dirb"
+    - "bind-tools"
+    - "lynx" 
+    - "nmap"
+
+  pen-analysis:
+    - "wireshark-qt"
+    - "exiftool"
 
 pacman:
   zsh:

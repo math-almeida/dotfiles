@@ -79,27 +79,44 @@ function explain() {
 ')\n"
 }
 
-# Function to install especific packages
-function ynstall() {
+# Function to install or remove especific group of packages
+function ymanage() {
     if ! command -v yq &> /dev/null; then
         echo "Error: 'yq' is not installed. Please install it to run this command."
         return 1
     fi
 
     if [ -z "$1" ]; then
-        echo "Install specific group of packages from packages.yaml"
-        echo "Packages file can be found in dotfiles root"
+        echo "Install or remove specific group of packages from packages.yaml"
+        echo "Default option is install, you can pass param remove to remove packages"
+        echo "Packages file can be found in dotfiles root\n"
+        echo "Ex: ymanage vpn"
+        echo "Ex: ymanage remove vpn"
         echo "____________________________________________________\n"
         echo "Current groups of packages:"
         echo "- printer"
         echo "- switch"
+        echo "- docker"
+        echo "- debug"
+        echo "- vpn"
+        echo "- pen-network"
+        echo "- pen-analysis"
+
         return 1
     fi
 
-    if [ "$1" = "pacman" ]; then
-        sudo yq ".pacman.$2" ~/Workspaces/Personal/dotfiles/packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
+    if [ "$1" = "remove" ]; then
+	if [ "$2" = "pacman" ]; then
+            sudo yq ".pacman.$3" ~/Workspaces/Personal/dotfiles/packages.yaml | tr -d '[],"' | xargs sudo pacman -Rs --noconfirm
+	else
+            sudo yq ".yay.$2" ~/Workspaces/Personal/dotfiles/packages.yaml | tr -d '[],"' | xargs yay -Rs --noconfirm 
+	fi
     else
-        sudo yq ".yay.$1" ~/Workspaces/Personal/dotfiles/packages.yaml | tr -d '[],"' | xargs yay -S --noconfirm 
+	if [ "$1" = "pacman" ]; then
+            sudo yq ".pacman.$2" ~/Workspaces/Personal/dotfiles/packages.yaml | tr -d '[],"' | xargs sudo pacman -S --noconfirm
+	else
+            sudo yq ".yay.$1" ~/Workspaces/Personal/dotfiles/packages.yaml | tr -d '[],"' | xargs yay -S --noconfirm 
+	fi
     fi
 }
 

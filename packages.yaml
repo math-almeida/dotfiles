@@ -55,9 +55,9 @@ yay:
     - "catppuccin-cursors-mocha"
 
   apps:
-    - "qbittorrent"
     - "vivaldi"
 
+# Optional groups of packages
   printer:
     - "cups"
     - "system-config-printer"
@@ -70,9 +70,9 @@ yay:
 
   switch:
     - "simple-mtpfs"
+    - "qbittorrent"
     - "dolphin" # We need dolphin since yazi cannot identify DBI folder
 
-# Optional groups of packages
   docker:
     - "docker"
     - "docker-compose"
@@ -89,17 +89,17 @@ yay:
   vpn:
     - "openvpn"
 
-  pen-network:
+  pen_network:
     - "openbsd-netcat"
     - "gobuster"
     - "dirb"
-    - "bind-tools"
+    - "bind"
     - "lynx" 
     - "nmap"
 
-  pen-analysis:
+  pen_analysis:
     - "wireshark-qt"
-    - "exiftool"
+    - "perl-image-exiftool"
 
 pacman:
   zsh:

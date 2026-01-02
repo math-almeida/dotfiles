@@ -3,6 +3,14 @@
 #define ___ &trans
 #define MO_LAY &mo
 
+// CONTROL BLUETOOTH PROFILES
+#define DE_B_C &bt BT_CLR
+#define DE_B_C_A &bt BT_CLR_ALL
+#define DE_B_NT &bt BT_NXT
+#define DE_B_PV &bt BT_PRV
+#define DE_B_SL &bt BT_SEL
+#define DE_B_DC &bt BT_DISC
+
 // CONTROL CMD/WINDOWS SHIFT ALT/META/OPTION
 #define DE_LCTRL &kp LCTRL 
 #define DE_LGUI &kp LGUI   

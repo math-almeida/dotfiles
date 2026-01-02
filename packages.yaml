@@ -96,6 +96,7 @@ yay:
     - "bind"
     - "lynx" 
     - "nmap"
+    - "traceroute"
 
   pen_analysis:
     - "wireshark-qt"

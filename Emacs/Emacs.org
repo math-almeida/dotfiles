@@ -1001,6 +1001,32 @@ Function to decode jwt tokens and parse to json
 
 #+end_src
 
+** Move text
+
+Configure feature to move text up or down. 
+
+#+begin_src emacs-lisp
+
+  (use-package move-text
+    :bind (("C-k" . move-text-up)
+           ("C-j" . move-text-down)))
+  
+#+end_src
+
+** Multiple cursors
+
+Configure keys to control multiple cursors
+
+#+begin_src emacs-lisp
+
+  (use-package multiple-cursors
+    :bind (("C-x j i" . mc/edit-lines)
+           ("C-x j j" . mc/mark-next-like-this) 
+           ("C-x j k" . mc/mark-previous-like-this) 
+           ("C-x j a" . mc/mark-all-like-this)))
+
+#+end_src
+
 * Applications
 
 ** Binding Prefix

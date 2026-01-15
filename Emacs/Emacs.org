@@ -1084,10 +1084,10 @@ For AI backend we are using [[https://github.com/karthink/gptel][gptel]], a awes
                                          :key (lambda () (auth-source-pick-first-password :host "api.anthropic.com")))))
 
   (torresmo/leader-keys
-    "ag" '(:ignore t :which-key "Gptel")
-    "agc" '(gptel :which-key "Chat")
-    "agf" '(gptel-add-file :which-key "Add file")
-    "agm" '(gptel-menu :which-key "Menu")
+    "aa" '(:ignore t :which-key "Gptel")
+    "aac" '(gptel :which-key "Chat")
+    "aaf" '(gptel-add-file :which-key "Add file")
+    "aam" '(gptel-menu :which-key "Menu")
     )
 
 #+end_src
@@ -1108,9 +1108,9 @@ For agentic programming we are using [[https://github.com/tninja/aider.el][Aider
     )
 
   (torresmo/leader-keys
-    "aa" '(:ignore t :which-key "Aider")
-    "aac" '(aider-run-aider :which-key "Chat")
-    "aam" '(aider-transient-menu :which-key "Menu")
+    "ai" '(:ignore t :which-key "Aider")
+    "aic" '(aider-run-aider :which-key "Chat")
+    "aim" '(aider-transient-menu :which-key "Menu")
     )
 
 #+end_src

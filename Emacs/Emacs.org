@@ -1064,28 +1064,63 @@ Configure keys to control multiple cursors
 
 #+end_src
 
-** IA
+** AI
 
-For IA integration we are using [[https://github.com/karthink/gptel][gptel]], a awesome LLM client to Emacs.
+AI integrations using cool libraries
+
+*** Gptel
+
+For AI backend we are using [[https://github.com/karthink/gptel][gptel]], a awesome LLM client to Emacs.
 
 #+begin_src emacs-lisp
 
   (use-package gptel
     :config
     (setq
-     gptel-model "claude-sonnet-4-20250514"
+     gptel-model "claude-sonnet-4-20250929"
      gptel-default-mode 'org-mode
      gptel-backend (gptel-make-anthropic "Claude"
                                          :stream t
                                          :key (lambda () (auth-source-pick-first-password :host "api.anthropic.com")))))
 
   (torresmo/leader-keys
-    "aa" '(:ignore t :which-key "IA assistant")
-    "aac" '(gptel :which-key "Chat")
-    "aaf" '(gptel-add-file :which-key "Add file")
-    "aam" '(gptel-menu :which-key "Menu")
+    "ag" '(:ignore t :which-key "Gptel")
+    "agc" '(gptel :which-key "Chat")
+    "agf" '(gptel-add-file :which-key "Add file")
+    "agm" '(gptel-menu :which-key "Menu")
     )
 
+#+end_src
+
+*** Aider
+
+For agentic programming we are using [[https://github.com/tninja/aider.el][Aider]]
+
+#+begin_src emacs-lisp
+  
+  (use-package aider
+    :config
+    (setq aider-args '("--model" "anthropic/claude-sonnet-4-5-20250929"))
+    (let ((api-key (auth-source-pick-first-password :host "api.anthropic.com")))
+    (if api-key
+        (setenv "ANTHROPIC_API_KEY" api-key)))
+    (global-set-key (kbd "C-c a") 'aider-transient-menu)
+    )
+
+  (torresmo/leader-keys
+    "aa" '(:ignore t :which-key "Aider")
+    "aac" '(aider-run-aider :which-key "Chat")
+    "aam" '(aider-transient-menu :which-key "Menu")
+    )
+
+#+end_src
+
+**** Installer
+
+#+begin_src sh
+
+  curl -LsSf https://aider.chat/install.sh | sh      
+  
 #+end_src
 
 * Development

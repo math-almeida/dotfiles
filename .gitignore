@@ -8,3 +8,4 @@ Emacs/packages
 Emacs/.local
 Emacs/eln-cache
 Emacs/elpa
+.aider*

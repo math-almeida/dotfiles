@@ -289,12 +289,17 @@ Variables to adjust in each system
 
 #+begin_src emacs-lisp
 
+  ;; Dual monitor
   (defvar torresmo/default-font-size 100)
   (defvar torresmo/default-variable-font-size 100)
 
+  ;; Single monitor
+  ;; (defvar torresmo/default-font-size 150)
+  ;; (defvar torresmo/default-variable-font-size 150)
+
   ;; Make frame transparency overridable
   (defvar torresmo/frame-transparency '(90 . 90))
-  
+
 #+end_src
 
 ** Basic Configuration

@@ -40,7 +40,7 @@ yay:
     - "swww"
     - "network-manager-applet"
     - "kwallet"
-    - "swaylock-effects"
+    - "hyprlock"
     - "xdg-user-dirs"
 
   fonts:

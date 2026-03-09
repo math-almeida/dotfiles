@@ -1128,6 +1128,38 @@ For agentic programming we are using [[https://github.com/tninja/aider.el][Aider
   
 #+end_src
 
+*** Kiro CLI
+
+Using Kiro CLI inside vterm buffer
+
+#+begin_src emacs-lisp
+  
+  (defun kiro-chat ()
+    (interactive)
+    (let ((buf (get-buffer-create "*kiro-chat*")))
+      (switch-to-buffer buf)
+      (unless (get-buffer-process buf)
+        (vterm buf)
+        (vterm-send-string "kiro-cli")
+        (vterm-send-return))))
+
+  (global-set-key (kbd "C-c k c") 'kiro-chat)
+
+  (torresmo/leader-keys
+    "ak" '(:ignore t :which-key "Kiro")
+    "akc" '(kiro-chat :which-key "Chat")
+    )
+
+#+end_src
+
+**** Install
+
+#+begin_src sh
+
+  curl -fsSL https://cli.kiro.dev/install | bash
+  
+#+end_src
+
 * Development
 
 ** Projectile

@@ -89,6 +89,10 @@ yay:
   vpn:
     - "openvpn"
 
+  chat:
+    - "discord"
+    - "telegram-desktop"
+
   pen_network:
     - "openbsd-netcat"
     - "gobuster"

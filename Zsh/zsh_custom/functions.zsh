@@ -99,6 +99,7 @@ function ymanage() {
         echo "- docker"
         echo "- debug"
         echo "- vpn"
+	echo "- chat"
         echo "- pen_network"
         echo "- pen_analysis"
 

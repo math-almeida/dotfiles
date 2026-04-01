@@ -1128,26 +1128,26 @@ For agentic programming we are using [[https://github.com/tninja/aider.el][Aider
   
 #+end_src
 
-*** Kiro CLI
+*** Claude
 
-Using Kiro CLI inside vterm buffer
+Using Claude CLI inside vterm buffer
 
 #+begin_src emacs-lisp
   
-  (defun kiro-chat ()
+  (defun claude-chat ()
     (interactive)
-    (let ((buf (get-buffer-create "*kiro-chat*")))
+    (let ((buf (get-buffer-create "*claude-chat*")))
       (switch-to-buffer buf)
       (unless (get-buffer-process buf)
         (vterm buf)
-        (vterm-send-string "kiro-cli")
+        (vterm-send-string "claude")
         (vterm-send-return))))
 
-  (global-set-key (kbd "C-c k c") 'kiro-chat)
+  (global-set-key (kbd "C-c k c") 'claude)
 
   (torresmo/leader-keys
-    "ak" '(:ignore t :which-key "Kiro")
-    "akc" '(kiro-chat :which-key "Chat")
+    "ac" '(:ignore t :which-key "Claude")
+    "acc" '(claude-chat :which-key "Chat")
     )
 
 #+end_src
@@ -1156,7 +1156,7 @@ Using Kiro CLI inside vterm buffer
 
 #+begin_src sh
 
-  curl -fsSL https://cli.kiro.dev/install | bash
+  curl -fsSL https://claude.ai/install.sh | bash
   
 #+end_src
 
